@@ -1,0 +1,36 @@
+/*
+	[Destoon B2B System] Copyright (c) 2008-2013 Destoon.COM
+	This is NOT a freeware, use is subject to license.txt
+*/
+/* global */
+body {margin:0px;font-size:12px;color:#000000;}
+/* common */
+.m {width:1000px;margin:auto;}
+.top {height:36px;line-height:36px;background:#F5F5F5;padding:0 10px 0 10px; color:#CCC;}
+#top a {text-decoration:none; color:#666; margin-right:10px;}
+#top a:hover {color:#FF6600;}
+
+.head {height:115px;overflow:hidden;}
+.head div {float:left;}
+.head .logo {padding:15px 10px 0 0px;height:90px;overflow:hidden;}
+.head h1 {font-size:24px;margin:32px 0 5px 10px;color:#333333;font-family:\9ED1\4F53;filter:glow(color=#FFFFFF,strength=3);}
+.head h4 {font-size:15px;margin:0 0 0 10px;color:#333333;}
+
+#menu a {text-decoration:none;}
+.menubg {border-bottom:2px solid #FF6600; border-top:1px solid #E5E5E5; background:#FFF;}
+.menu {height:36px;overflow:hidden; font-size:14px;}
+.menu_li {float:left;white-space:nowrap;border-right:#FFFFFF 1px solid;line-height:36px;padding:0 20px 0 20px;}
+.menu_li span {color:#003D70;}
+.menu_on {float:left;white-space:nowrap; line-height:36px;padding:0 20px 0 20px;background:#FF6600;}
+.menu_on span {color:#FFF;}
+
+.side_head {border:#DDD 1px solid;border-bottom:none;background:url('side_head.gif') repeat-x;}
+.side_head div {padding:0 10px 0 10px;font-size:12px;height:28px;line-height:30px;overflow:hidden;letter-spacing:1px;}
+.side_body {border:#DDD 1px solid;border-top:none;background:#FFFFFF;padding:10px;margin:0 0 10px; clear:both;}
+.side_body li {background:url('../../image/ico_arrow.gif') no-repeat 5px 7px;padding:0 0 0 20px;height:26px;line-height:26px;overflow:hidden;}
+
+.main_head {border:#DDD 1px solid;border-bottom:none;background:url('main_head.gif') repeat-x;}
+.main_head div {padding:0 10px 0 0;font-size:12px;height:28px;line-height:30px;overflow:hidden;letter-spacing:1px;}
+.main_body {border:#DDD 1px solid;border-top:none;background:#FFFFFF;padding:10px;margin:0 0 10px; clear:both;}
+
+.main_head strong {background:#FFF; display:block; float:left; padding:0 10px;}
