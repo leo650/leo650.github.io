@@ -1,350 +1,528 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-	<title>拉吾尤摩(Love You More)</title>
-	<meta name="keywords" content="拉吾尤摩(Love You More) 品牌官方网站，建立对自己健康有严格要求和对水果质量有着苛刻要求的客户与关注绿色水果与经验丰富的果园之间的纽带"/>
-	<meta name="generator" content="DESTOON B2B - www.destoon.com"/>
-	<meta name="template" content="homepage"/>
-	<link rel="stylesheet" type="text/css" href="static/common.css"/>
-	<link rel="stylesheet" type="text/css" href="static/style.css"/>
-	<script type="text/javascript" src="static/homepage.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拉吾尤摩(Love You More) - 绿色优质水果专家</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 导航栏 */
+        header {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: #FFEB3B;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #FFEB3B;
+        }
+        
+        /* 主要内容区 */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+            url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%234CAF50"/><circle cx="20" cy="20" r="5" fill="%23FFCDD2"/><circle cx="50" cy="30" r="7" fill="%23FFF9C4"/><circle cx="80" cy="25" r="6" fill="%23E1F5FE"/><circle cx="30" cy="70" r="8" fill="%23FCE4EC"/><circle cx="70" cy="60" r="5" fill="%23E8F5E8"/></svg>');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-button {
+            background-color: #FF9800;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 10px;
+        }
+        
+        .cta-button:hover {
+            background-color: #F57C00;
+        }
+        
+        /* 通用区域样式 */
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2E7D32;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #666;
+        }
+        
+        /* 品牌故事 */
+        .story-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .story-text {
+            flex: 1;
+        }
+        
+        .story-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2E7D32;
+        }
+        
+        .story-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        .story-image {
+            flex: 1;
+            background-color: #e8f5e8;
+            height: 400px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+        
+        /* 产品展示 */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: #e8f5e8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-name {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #2E7D32;
+        }
+        
+        .product-desc {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: #FF9800;
+            font-size: 1.2rem;
+        }
+        
+        /* 水果知识 */
+        .knowledge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .knowledge-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .knowledge-card h3 {
+            color: #2E7D32;
+            margin-bottom: 1rem;
+        }
+        
+        .knowledge-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+        
+        /* 联系我们 */
+        .contact-section {
+            background: linear-gradient(135deg, #2E7D32, #4CAF50);
+            color: white;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .contact-info h3, .contact-form h3 {
+            margin-bottom: 1rem;
+            color: #FFEB3B;
+        }
+        
+        .contact-info p {
+            margin-bottom: 0.8rem;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        .form-button {
+            background-color: #FF9800;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .story-content {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="top" id="top"></div>
-  <span>
-    <div>
-      <span style="height: 0 !important;overflow:hidden !important;display:inline-block !important;border:0 !important;margin:0 !important;padding:0 !important; position:absolute !important;top:2% !important;left:2% !important;background:transparent !important;">
-        <table id="ajrbsyusdcxr" style="width: 30% !important; border: 0 !important;">
-          <tbody>
-            <tr>
-              <td id="ajrbsyusdcxr_0" width="30%" _ad6a23e58c7567k2e4hahdhk46bf2gb="1">
-                <iframe sandbox="allow-forms allow-orientation-lock allow-pointer-lock allow-same-origin allow-scripts" id="_jfh85gfd1ka5d8ac2kb8b3h42gb146865419199134" frameborder="0" border="0" scrolling="no" marginheight="0px" marginwidth="0px" _09jhfbafa5hii0b4040j51ji5geh42gb="1" _ad6a23e58c7567k2e4hahdhk46bf2gb="1" style="border:0 !important;border-width:0 !important;width:300px !important;height:250px !important;margin-bottom: 20px !important;"></iframe>
-                <iframe sandbox="allow-forms allow-orientation-lock allow-pointer-lock allow-same-origin allow-scripts" id="_jfh85gfd1ka5d8ac2kb8b3h42gb14686541965426" frameborder="0" border="0" scrolling="no" marginheight="0px" marginwidth="0px" _09jhfbafa5hii0b4040j51ji5geh42gb="1" _ad6a23e58c7567k2e4hahdhk46bf2gb="1" style="border: 0px !important; width: 300px !important; height: 600px !important; margin-bottom: 20px !important; display: none;"></iframe>
-              </td>
-              <td id="ajrbsyusdcxr_x" width="30%"></td>
-            </tr>
-          </tbody>
-        </table>
-        <style>#ajrbsyusdcxr div, #ajrbsyusdcxr span, #ajrbsyusdcxr object, #ajrbsyusdcxr video, #ajrbsyusdcxr embed, #ajrbsyusdcxr img { display:none !important; }#ajrbsyusdcxr, #ajrbsyusdcxr * { border: 0 !important; }</style>
-      </span>
-    </div>
-  </span>
-<div class="m">
-	<div class="head">
-		<div class="logo">
-			<a href="https://leo650.github.io">
-				<img src="static/14-27-53-55-359.jpg" alt="凯莱尔" onload="AutoLogo(250,90,this)"/>
-			</a>
-		</div>
-		<div>
-			<h1>厦门市凯莱尔门窗科技有限公司</h1>
-			<h4>高端断桥铝合金门窗、异形窗纱一体窗、玻璃幕墙、纯木门窗、铝包木、木包铝等复合门窗</h4>
-		</div>
-	</div>
-	</div>
-	<div class="menubg">
-		<div class="m">
-			<div class="menu" id="menu">
-				<ul>
-					<li class="menu_on">
-						<a href="index.html">
-							<span>首页</span>
-						</a>
-					</li>
-					<li class="menu_li">
-						<a href="company.html">
-							<span>公司介绍</span>
-						</a>
-					</li>
-					<li class="menu_li">
-						<a href="goods.html">
-							<span>商品</span>
-						</a>
-					</li>
-					<li class="menu_li">
-						<a href="contact.html">
-							<span>联系方式</span>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-<div class="banner">
-	<p align="center">
-		<img src="static/14-28-01-13-359.jpg" width="1058" height="400" />
-	</p>
-</div>
-<div class="m">
-	<div class="pos" id="pos">
-		<span class="f_r">
-			<script type="text/javascript">show_date();</script>
-		</span>
-		<span id="position"></span>
-	</div>
-</div>
-<div class="m">
-	<table cellpadding="0" cellspacing="0" width="100%">
-
-		<tr>
-			<td width="200" valign="top" id="side">
-				<div class="side_head">
-					<div>
-						<span class="f_r">
-							<a href="#">
-								<img src="static/more.gif" title="更多"/>
-							</a>
-						</span> <strong>联系方式</strong>
-					</div>
-				</div>
-				<div class="side_body" style="padding-left:0px;padding-right:0px">
-					<ul>
-						<li>联系人：郑楚成</li>
-						<li title="3071743400@qq.com">邮件：3071743400@qq.com</li>
-						<li title="13859962021">手机：13859962021</li>
-						<li title="13859962021">微信：13859962021</li>
-						<li title="0592-6108444460">电话：0592-6108460</li>
-						<li title="0592-6108444460">传真：0592-6108460</li>
-					</ul>
-				</div>
-				<div class="side_head">
-					<div>
-						<span class="f_r">
-							<a href="#">
-								<img src="static/more.gif" title="更多"/>
-							</a>
-						</span> <strong>新闻中心</strong>
-					</div>
-				</div>
-				<div class="side_body">
-					<ul>
-						<li>暂无新闻</li>
-					</ul>
-				</div>
-				<div class="side_head">
-					<div>
-						<span class="f_r">
-							<a href="#">
-								<img src="static/more.gif" title="更多"/>
-							</a>
-						</span>
-						<strong>产品分类</strong>
-					</div>
-				</div>
-				<div class="side_body">
-					<ul>
-						<li>暂无分类</li>
-					</ul>
-				</div>
-			</td>
-			<td width="10" id="split"></td>
-			<td valign="top" id="main">
-				<!--主体内容 start-->
-				<div class="dsn" id="pos_show">
-					您当前的位置：
-					<a href="index.html">首页</a>
-					&raquo; 欢迎光临
-				</div>
-				<div class="main_head">
-					<div>
-						<span class="f_r">
-							<a href="goods.html">
-								<img src="static/more.gif" title="更多"/>
-							</a>
-						</span>
-						<strong>热卖产品</strong>
-					</div>
-				</div>
-				<div class="main_body">
-					<table cellpadding="0" cellspacing="0" width="100%">
-						<tr align="left">
-							<td valign="top" width="20%" height="180">
-								<div class="thumb" onmouseover="this.className='thumb thumb_on';" onmouseout="this.className='thumb';">
-									<a href="DQPK55.html" target="_blank">
-										<img src="static/hotproduct/DQPK55_thumb.jpg" width="170" height="170"/>
-									</a>
-									<div>
-										<a href="DQPK55.html" title="55断桥平开系列" target="_blank">55 断桥平开系列</a>
-									</div>
-									<span class="f_price px16">￥0.00</span>
-								</div>
-							</td>
-							<td valign="top" width="20%" height="180">
-								<div class="thumb" onmouseover="this.className='thumb thumb_on';" onmouseout="this.className='thumb';">
-									<a href="DQPK65.html" target="_blank">
-										<img src="static/hotproduct/DQPK65_thumb.jpg" width="170" height="170"/>
-									</a>
-									<div>
-										<a href="DQPK65.html" title="65断桥平开系列" target="_blank">65 断桥平开系列</a>
-									</div>
-									<span class="f_price px16">￥0.00</span>
-								</div>
-							</td>
-							<td valign="top" width="20%" height="180">
-								<div class="thumb" onmouseover="this.className='thumb thumb_on';" onmouseout="this.className='thumb';">
-									<a href="ZXZDM75.html" target="_blank">
-										<img src="static/hotproduct/ZXZDM75_thumb.jpg" width="170" height="170"/>
-									</a>
-									<div>
-										<a href="ZXZDM75.html" title="75重型折叠门" target="_blank">75 重型折叠门</a>
-									</div>
-									<span class="f_price px16">￥0.00</span>
-								</div>
-							</td>
-							<td valign="top" width="20%" height="180">
-								<div class="thumb" onmouseover="this.className='thumb thumb_on';" onmouseout="this.className='thumb';">
-									<a href="CSYTC90.html" target="_blank">
-										<img src="static/hotproduct/CSYTC90_thumb.jpg" width="170" height="170"/>
-									</a>
-									<div>
-										<a href="CSYTC90.html" title="90 窗纱一体窗" target="_blank">90 窗纱一体窗</a>
-									</div>
-									<span class="f_price px16">￥0.00</span>
-								</div>
-							</td>
-						</tr>
-						<tr align="left">
-							<td valign="top" width="20%" height="180">
-								<div class="thumb" onmouseover="this.className='thumb thumb_on';" onmouseout="this.className='thumb';">
-									<a href="CSYTC108.html" target="_blank">
-										<img src="static/hotproduct/CSYTC108_thumb.jpg" width="170" height="170"/>
-									</a>
-									<div>
-										<a href="CSYTC108.html" title="108 窗纱一体窗" target="_blank">108 窗纱一体窗</a>
-									</div>
-									<span class="f_price px16">￥0.00</span>
-								</div>
-							</td>
-							<td valign="top" width="20%" height="180">
-								<div class="thumb" onmouseover="this.className='thumb thumb_on';" onmouseout="this.className='thumb';">
-									<a href="ZXM120.html" target="_blank">
-										<img src="static/hotproduct/ZXM120_thumb.jpg" width="170" height="170"/>
-									</a>
-									<div>
-										<a href="ZXM120.html" title="120 重型门" target="_blank">120 重型门</a>
-									</div>
-									<span class="f_price px16">￥0.00</span>
-								</div>
-							</td>
-							<td valign="top" width="20%" height="180">
-								<div class="thumb" onmouseover="this.className='thumb thumb_on';" onmouseout="this.className='thumb';">
-									<a href="SGDQTL133.html" target="_blank">
-										<img src="static/hotproduct/SGDQTL133_thumb.jpg" width="170" height="170"/>
-									</a>
-									<div>
-										<a href="SGDQTL133.html" title="133 三轨断桥推拉系列" target="_blank">133 三轨断桥推拉系列</a>
-									</div>
-									<span class="f_price px16">￥0.00</span>
-								</div>
-							</td>
-                            <td valign="top" width="20%" height="180">
-								<div class="thumb" onmouseover="this.className='thumb thumb_on';" onmouseout="this.className='thumb';">
-									<a href="CSYTC135.html" target="_blank">
-										<img src="static/hotproduct/CSYTC135_thumb.jpg" width="170" height="170"/>
-									</a>
-									<div>
-										<a href="CSYTC135.html" title="135 窗纱一体窗" target="_blank">135 窗纱一体窗</a>
-									</div>
-									<span class="f_price px16">￥0.00</span>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td valign="top" width="20%" height="180">
-								<div class="thumb" onmouseover="this.className='thumb thumb_on';" onmouseout="this.className='thumb';">
-									<a href="SGDQTL728.html" target="_blank">
-										<img src="static/hotproduct/SGDQTL728_thumb.jpg" width="170" height="170"/>
-									</a>
-									<div>
-										<a href="SGDQTL728.html" title="728 三轨断桥推拉系列" target="_blank">728 三轨断桥推拉系列</a>
-									</div>
-									<span class="f_price px16">￥0.00</span>
-								</div>
-							</td>
-
-						</tr>
-						</table>
-					</div>
-					<!--主体内容 end-->
-				<div class="main_head">
-					<div>
-						<span class="f_r">
-							<a href="goods.html">
-								<img src="static/more.gif" title="更多"/>
-							</a>
-						</span>
-						<strong>推荐产品</strong>
-					</div>
-				</div>
-				<div class="main_body">
-					<table cellpadding="0" cellspacing="0" width="100%">
-						<tr align="left">
-							<td valign="top" width="20%" height="180">
-								<div class="thumb" onmouseover="this.className='thumb thumb_on';" onmouseout="this.className='thumb';">
-									<a href="KWKXXC70.html" target="_blank">
-										<img src="static/productrec/KWKXXC70_thumb.jpg" width="170" height="170" alt="70平开外开下悬窗"/>
-									</a>
-									<div>
-										<a href="KWKXXC70.html" title="70平开外开下悬窗" target="_blank">70平开外开下悬窗</a>
-									</div>
-									<span class="f_price px16">￥0.00</span>
-								</div>
-							</td>
-							<td valign="top" width="20%" height="180">
-								<div class="thumb" onmouseover="this.className='thumb thumb_on';" onmouseout="this.className='thumb';">
-									<a href="KM75.html" target="_blank">
-										<img src="static/productrec/KM75_thumb.jpg" width="170" height="170" alt="75平开门"/>
-									</a>
-									<div>
-										<a href="KM75.html" title="75平开门" target="_blank">75平开门</a>
-									</div>
-									<span class="f_price px16">￥0.00</span>
-								</div>
-							</td>
-							<td valign="top" width="20%" height="180">
-								<div class="thumb" onmouseover="this.className='thumb thumb_on';" onmouseout="this.className='thumb';">
-									<a href="NKND90.html" target="_blank">
-										<img src="static/productrec/NKND90_thumb.jpg" width="170" height="170" alt="90 内开内倒"/>
-									</a>
-									<div>
-										<a href="NKND90.html" title="90 内开内倒" target="_blank">90 内开内倒</a>
-									</div>
-									<span class="f_price px16">￥0.00</span>
-								</div>
-							</td>
-							<td valign="top" width="20%" height="180">
-								<div class="thumb" onmouseover="this.className='thumb thumb_on';" onmouseout="this.className='thumb';">
-									<a href="CSYTC.html" target="_blank">
-										<img src="static/productrec/CSYTC_thumb.png" width="170" height="170" alt="窗纱一体窗"/>
-									</a>
-									<div>
-										<a href="CSYTC.html" title="窗纱一体窗" target="_blank">窗纱一体窗</a>
-									</div>
-									<span class="f_price px16">￥0.00</span>
-								</div>
-							</td>
-						</tr>
-						</table>
-					</div>
-					<!--主体内容 end-->
-				</td>
-			</tr>
-		</table>
-	</div>
-	<div class="footbg">
-		<div class="foot m" id="foot">
-			 <div>
-          CopyRight&copy;2016 厦门市凯莱尔门窗科技有限公司 版权所有&nbsp;&nbsp;
-技术支持：
-厦门市海仓区忠诚载物咨询工作室  互联网站制作
-&nbsp;&nbsp;
-访问量:4222&nbsp;&nbsp;
-          <a href="https://leo650.github.io/">网站首页</a>
-          &nbsp;&nbsp;
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">拉吾尤摩<span>(Love You More)</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#story">品牌故事</a></li>
+                    <li><a href="#products">产品中心</a></li>
+                    <li><a href="#knowledge">水果知识</a></li>
+                    <li><a href="#contact">联系我们</a></li>
+                </ul>
+            </nav>
         </div>
-		</div>
-	</div>
-	<script type="text/javascript">Dd('position').innerHTML = Dd('pos_show').innerHTML;</script>
+    </header>
+
+    <!-- 首页 -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>拉吾尤摩(Love You More)</h1>
+            <p>专注于为您提供最优质的绿色水果，连接健康生活与天然果园的桥梁</p>
+            <a href="#products" class="cta-button">探索产品</a>
+            <a href="#story" class="cta-button">了解我们</a>
+        </div>
+    </section>
+
+    <!-- 品牌故事 -->
+    <section id="story" class="section">
+        <div class="container">
+            <h2 class="section-title">品牌故事</h2>
+            <p class="section-subtitle">源于对健康生活的执着追求，始于对绿色果园的信任合作</p>
+            <div class="story-content">
+                <div class="story-text">
+                    <h3>我们的初心</h3>
+                    <p>拉吾尤摩(Love You More)成立于2018年，由一群热爱健康生活、关注食品安全的创业者发起。我们深知现代人对健康的追求和对食品品质的严苛要求，因此决定建立一座桥梁，连接对品质有严格要求的消费者与经验丰富的绿色果园。</p>
+                    
+                    <h3>我们的使命</h3>
+                    <p>我们致力于成为绿色水果领域的专家，通过严格的筛选机制，只与那些坚持生态种植、无污染生产的果园合作。从土壤检测到果实采摘，从储存运输到配送上门，我们全程监控每一个环节，确保您收到的每一颗水果都达到最高标准。</p>
+                    
+                    <h3>我们的愿景</h3>
+                    <p>让每一个家庭都能享受到来自大自然的纯净美味，让健康的生活方式成为每个人的日常。我们希望通过拉吾尤摩的努力，让更多人认识到优质水果对健康的重要性，推动整个行业向更绿色、更可持续的方向发展。</p>
+                </div>
+                <div class="story-image">🌳</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品中心 -->
+    <section id="products" class="section">
+        <div class="container">
+            <h2 class="section-title">产品中心</h2>
+            <p class="section-subtitle">精心挑选，严格筛选，只为给您最好的水果体验</p>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">🍎</div>
+                    <div class="product-info">
+                        <h3 class="product-name">新疆阿克苏苹果</h3>
+                        <p class="product-desc">来自天山雪水灌溉的苹果，糖分充足，口感脆嫩，被誉为"水果之王"</p>
+                        <p class="product-price">¥38.00 / kg</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">🍊</div>
+                    <div class="product-info">
+                        <h3 class="product-name">赣南脐橙</h3>
+                        <p class="product-desc">江西赣州特产，果肉饱满，酸甜适中，富含维生素C，冬季必备</p>
+                        <p class="product-price">¥28.00 / kg</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">🍇</div>
+                    <div class="product-info">
+                        <h3 class="product-name">阳光玫瑰葡萄</h3>
+                        <p class="product-desc">日本引进品种，颗粒饱满，香甜爽脆，带有独特玫瑰香气</p>
+                        <p class="product-price">¥58.00 / kg</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">🍓</div>
+                    <div class="product-info">
+                        <h3 class="product-name">丹东草莓</h3>
+                        <p class="product-desc">东北特产，色泽鲜艳，口感细腻，营养价值高，老少皆宜</p>
+                        <p class="product-price">¥48.00 / kg</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">🍋</div>
+                    <div class="product-info">
+                        <h3 class="product-name">四川安岳柠檬</h3>
+                        <p class="product-desc">皮薄汁多，清香怡人，富含维生素C，美容养颜佳品</p>
+                        <p class="product-price">¥22.00 / kg</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">🍑</div>
+                    <div class="product-info">
+                        <h3 class="product-name">北京平谷大桃</h3>
+                        <p class="product-desc">皮薄肉厚，汁多味甜，营养丰富，夏季消暑首选</p>
+                        <p class="product-price">¥32.00 / kg</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 水果知识 -->
+    <section id="knowledge" class="section">
+        <div class="container">
+            <h2 class="section-title">水果知识</h2>
+            <p class="section-subtitle">了解水果的营养价值，享受健康美味生活</p>
+            <div class="knowledge-grid">
+                <div class="knowledge-card">
+                    <div class="knowledge-icon">🍎</div>
+                    <h3>苹果的营养价值</h3>
+                    <p>苹果含有丰富的膳食纤维、维生素C和抗氧化物质。每天一个苹果有助于降低胆固醇，增强免疫力，促进消化系统健康。</p>
+                </div>
+                <div class="knowledge-card">
+                    <div class="knowledge-icon">🍊</div>
+                    <h3>柑橘类水果的益处</h3>
+                    <p>柑橘类水果富含维生素C，具有抗氧化作用，能增强免疫系统，预防感冒。同时含有丰富的柠檬酸，有助于促进新陈代谢。</p>
+                </div>
+                <div class="knowledge-card">
+                    <div class="knowledge-icon">🍇</div>
+                    <h3>葡萄的健康功效</h3>
+                    <p>葡萄含有多种抗氧化剂，特别是白藜芦醇，有助于保护心血管健康。紫色葡萄还富含花青素，具有抗衰老功效。</p>
+                </div>
+                <div class="knowledge-card">
+                    <div class="knowledge-icon">🍓</div>
+                    <h3>草莓的营养成分</h3>
+                    <p>草莓富含维生素C、叶酸和锰。低热量高营养，有助于皮肤健康，促进血液循环，是理想的美容水果。</p>
+                </div>
+                <div class="knowledge-card">
+                    <div class="knowledge-icon">🍋</div>
+                    <h3>柠檬的妙用</h3>
+                    <p>柠檬含有丰富的维生素C和柠檬酸，具有美白、抗氧化的作用。柠檬水还能帮助消化，促进体内毒素排出。</p>
+                </div>
+                <div class="knowledge-card">
+                    <div class="knowledge-icon">🍑</div>
+                    <h3>桃子的选择技巧</h3>
+                    <p>选择桃子时应挑选表皮有绒毛、颜色均匀、手感稍软的。成熟的桃子香味浓郁，果肉饱满，甜度适中。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title">联系我们</h2>
+            <p class="section-subtitle">有任何问题或建议，请随时与我们联系</p>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>联系方式</h3>
+                    <p>📞 客服热线：400-123-4567</p>
+                    <p>✉️ 邮箱：info@loveyoumore.com</p>
+                    <p>📍 地址：北京市朝阳区绿色农业园区A座101室</p>
+                    <p>🕒 营业时间：周一至周日 9:00-21:00</p>
+                    <p>📱 微信客服：love-you-more</p>
+                </div>
+                <div class="contact-form">
+                    <h3>在线留言</h3>
+                    <form>
+                        <input type="text" placeholder="您的姓名" required>
+                        <input type="email" placeholder="您的邮箱" required>
+                        <input type="tel" placeholder="联系电话" required>
+                        <textarea placeholder="留言内容" rows="4" required></textarea>
+                        <button type="submit" class="form-button">发送留言</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 拉吾尤摩(Love You More). 版权所有 | 专注绿色健康水果 | 连接优质果园与健康生活</p>
+            <p>京ICP备XXXXXXXX号 | 食品经营许可证：XXXXXXXXXX</p>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 表单提交处理
+        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('感谢您的留言！我们的客服人员会在24小时内与您联系。');
+            this.reset();
+        });
+        
+        // 页面加载完成后执行
+        window.addEventListener('load', function() {
+            // 添加一些动态效果
+            const cards = document.querySelectorAll('.product-card, .knowledge-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
 </body>
 </html>
