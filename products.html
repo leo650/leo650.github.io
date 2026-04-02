@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+    <title>产品中心 - 拉吾尤摩(Love You More)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 导航栏 */
+        header {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: #FFEB3B;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #FFEB3B;
+        }
+        
+        /* 页面标题 */
+        .page-hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+            url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%234CAF50"/><circle cx="20" cy="20" r="5" fill="%23FFCDD2"/><circle cx="50" cy="30" r="7" fill="%23FFF9C4"/><circle cx="80" cy="25" r="6" fill="%23E1F5FE"/><circle cx="30" cy="70" r="8" fill="%23FCE4EC"/><circle cx="70" cy="60" r="5" fill="%23E8F5E8"/></svg>');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .page-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* 产品列表 */
+        .products-section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2E7D32;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: #e8f5e8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-name {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #2E7D32;
+        }
+        
+        .product-desc {
+            color: #666;
+            margin-bottom: 1rem;
+            height: 60px;
+            overflow: hidden;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: #FF9800;
+            font-size: 1.2rem;
+        }
+        
+        /* 分页导航 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+            gap: 0.5rem;
+        }
+        
+        .pagination button {
+            padding: 10px 15px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .pagination button:hover {
+            background-color: #e8f5e8;
+        }
+        
+        .pagination button.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">拉吾尤摩<span>(Love You More)</span></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="story.html">品牌故事</a></li>
+                    <li><a href="products.html">产品中心</a></li>
+                    <li><a href="knowledge.html">水果知识</a></li>
+                    <li><a href="contact.html">联系我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 页面标题 -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>产品中心</h1>
+            <p>精心挑选，严格筛选，只为给您最好的水果体验</p>
+        </div>
+    </section>
+
+    <!-- 产品列表 -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">精选产品</h2>
+            <div class="products-grid" id="productsGrid">
+                <!-- 产品卡片将通过JavaScript动态生成 -->
+            </div>
+            
+            <!-- 分页导航 -->
+            <div class="pagination" id="pagination">
+                <!-- 分页按钮将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>版权所有：东莞市多自爱贸易有限公司 &copy; 2026 拉吾尤摩(Love You More).  | 专注绿色健康水果 | 连接优质果园与健康生活</p>
+        </div>
+    </footer>
+
+    <script>
+        // 产品数据
+        const products = [
+            {
+                id: 1,
+                name: "新疆阿克苏苹果",
+                desc: "来自天山雪水灌溉的苹果，糖分充足，口感脆嫩，被誉为'水果之王'",
+                price: "¥38.00 / kg",
+                image: "🍎",
+                detail: "新疆阿克苏苹果以其独特的地理优势和气候条件，孕育出了糖分高、口感脆嫩的优质苹果。这里的苹果在昼夜温差极大的环境中生长，使得糖分充分积累，形成了独特的冰糖心现象。每一口都是甜蜜的享受，富含维生素和膳食纤维，是健康生活的理想选择。"
+            },
+            {
+                id: 2,
+                name: "赣南脐橙",
+                desc: "江西赣州特产，果肉饱满，酸甜适中，富含维生素C，冬季必备",
+                price: "¥28.00 / kg",
+                image: "🍊",
+                detail: "赣南脐橙是中国国家地理标志产品，产自江西省赣州市。这里独特的红壤土质和亚热带季风气候为脐橙提供了理想的生长环境。赣南脐橙果大形正，橙红鲜艳，肉质脆嫩、化渣，风味浓甜芳香，含果汁55%以上，深受消费者喜爱。富含维生素C、胡萝卜素、蛋白质等多种营养元素。"
+            },
+            {
+                id: 3,
+                name: "阳光玫瑰葡萄",
+                desc: "日本引进品种，颗粒饱满，香甜爽脆，带有独特玫瑰香气",
+                price: "¥58.00 / kg",
+                image: "🍇",
+                detail: "阳光玫瑰葡萄是日本最新培育的杂交葡萄品种，属于欧美杂交种。其特点是果粒大、果肉硬脆、甜度高、有浓郁的玫瑰香味。这种葡萄不仅口感极佳，而且营养价值也很高，富含葡萄糖、果糖、维生素以及钙、钾、磷、铁等人体必需的矿物质元素。因其独特的品质，被誉为'葡萄中的爱马仕'。"
+            },
+            {
+                id: 4,
+                name: "丹东草莓",
+                desc: "东北特产，色泽鲜艳，口感细腻，营养价值高，老少皆宜",
+                price: "¥48.00 / kg",
+                image: "🍓",
+                detail: "丹东草莓是辽宁省丹东市特产，中国国家地理标志产品。丹东地处北纬40度草莓黄金生产带，独特的地理位置和气候条件孕育了品质优良的草莓。丹东草莓色泽鲜艳，果肉多汁，香味浓郁，酸甜适中。富含维生素C、维生素A、维生素E、维生素P、维生素B1、维生素B2，以及多种氨基酸和矿物质。"
+            },
+            {
+                id: 5,
+                name: "四川安岳柠檬",
+                desc: "皮薄汁多，清香怡人，富含维生素C，美容养颜佳品",
+                price: "¥22.00 / kg",
+                image: "🍋",
+                detail: "四川安岳柠檬是中国国家地理标志产品，产量占全国总产量的80%以上，被誉为'中国柠檬之都'。安岳柠檬果皮油亮、果肉丰厚、汁液丰富、香气浓郁。富含维生素C、维生素P、柠檬酸、苹果酸、奎宁酸等多种有机酸及钙、磷、铁等矿物质。柠檬具有生津止渴、开胃解腥、美白护肤等多种功效。"
+            },
+            {
+                id: 6,
+                name: "北京平谷大桃",
+                desc: "皮薄肉厚，汁多味甜，营养丰富，夏季消暑首选",
+                price: "¥32.00 / kg",
+                image: "🍑",
+                detail: "北京平谷大桃是中国国家地理标志产品，以个大、色艳、味甜、桃香浓郁而闻名。平谷大桃果肉白色或黄色，肉质致密，柔软多汁，甜酸适度，香气浓郁。富含多种维生素、矿物质、蛋白质、脂肪、碳水化合物等营养成分。平谷大桃不仅口感好，营养价值也很高，是夏季消暑的理想水果。"
+            },
+            {
+                id: 7,
+                name: "烟台大樱桃",
+                desc: "果粒饱满，色泽诱人，甜度极高，营养丰富",
+                price: "¥68.00 / kg",
+                image: "🍒",
+                detail: "烟台大樱桃是中国国家地理标志产品，得益于烟台独特的海洋性气候和适宜的土壤条件，产出的大樱桃果粒饱满、色泽诱人、甜度极高。烟台大樱桃富含蛋白质、维生素C、维生素A、钙、磷、铁等营养成分，具有补血、养颜、增强免疫力等功效。"
+            },
+            {
+                id: 8,
+                name: "海南芒果",
+                desc: "金黄诱人，香甜软糯，热带风情十足",
+                price: "¥35.00 / kg",
+                image: "🥭",
+                detail: "海南芒果以优良的品质享誉国内外，得益于海南独特的热带季风气候和充足的光照。海南芒果果皮光滑，色泽金黄，果肉橙黄，质地细腻，纤维少，味道甜美。富含维生素A、维生素C、维生素E、胡萝卜素等多种营养成分，具有防癌、抗癌、美化肌肤等功效。"
+            },
+            {
+                id: 9,
+                name: "陕西洛川苹果",
+                desc: "色泽鲜艳，口感脆甜，营养丰富，老少皆宜",
+                price: "¥30.00 / kg",
+                image: "🍎",
+                detail: "陕西洛川苹果是中国国家地理标志产品，生长在世界苹果优生区的核心地带。洛川苹果色泽鲜艳，口感脆甜，汁多肉细，酸甜适中。富含维生素、矿物质和膳食纤维，具有生津润肺、健脾开胃、增进食欲等功效。洛川苹果的生长环境优越，无工业污染，是真正的绿色健康水果。"
+            },
+            {
+                id: 10,
+                name: "广东增城荔枝",
+                desc: "晶莹剔透，甜如甘露，夏日限定美味",
+                price: "¥45.00 / kg",
+                image: "荔枝",
+                detail: "广东增城荔枝是中国国家地理标志产品，享有“岭南第一品”的美誉。增城荔枝果肉晶莹如雪，清甜爽口，核小肉厚。富含葡萄糖、蔗糖、蛋白质、维生素C、柠檬酸等多种营养成分。荔枝具有补脾益肝、理气补血、温中止痛等功效，是夏季消暑的理想水果。"
+            }
+        ];
+
+        // 分页配置
+        const itemsPerPage = 6;
+        let currentPage = 1;
+        const totalPages = Math.ceil(products.length / itemsPerPage);
+
+        // 渲染产品列表
+        function renderProducts(page) {
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageProducts = products.slice(startIndex, endIndex);
+            
+            const productsGrid = document.getElementById('productsGrid');
+            productsGrid.innerHTML = '';
+            
+            pageProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.onclick = () => showProductDetail(product.id);
+                
+                productCard.innerHTML = `
+                    <div class="product-image">${product.image}</div>
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-desc">${product.desc}</p>
+                        <p class="product-price">${product.price}</p>
+                    </div>
+                `;
+                
+                productsGrid.appendChild(productCard);
+            });
+        }
+
+        // 渲染分页导航
+        function renderPagination() {
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+            
+            // 上一页按钮
+            if (currentPage > 1) {
+                const prevButton = document.createElement('button');
+                prevButton.textContent = '上一页';
+                prevButton.onclick = () => changePage(currentPage - 1);
+                pagination.appendChild(prevButton);
+            }
+            
+            // 页码按钮
+            for (let i = 1; i <= totalPages; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.textContent = i;
+                pageButton.className = i === currentPage ? 'active' : '';
+                pageButton.onclick = () => changePage(i);
+                pagination.appendChild(pageButton);
+            }
+            
+            // 下一页按钮
+            if (currentPage < totalPages) {
+                const nextButton = document.createElement('button');
+                nextButton.textContent = '下一页';
+                nextButton.onclick = () => changePage(currentPage + 1);
+                pagination.appendChild(nextButton);
+            }
+        }
+
+        // 切换页面
+        function changePage(page) {
+            currentPage = page;
+            renderProducts(currentPage);
+            renderPagination();
+        }
+
+        // 显示产品详情（模拟跳转）
+        function showProductDetail(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                // 创建一个临时的详情页面
+                const detailPage = `
+                    <!DOCTYPE html>
+                    <html lang="zh-CN">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+						<link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+                        <title>${product.name} - 产品详情 - 拉吾尤摩(Love You More)</title>
+                        <style>
+                            * {
+                                margin: 0;
+                                padding: 0;
+                                box-sizing: border-box;
+                            }
+                            
+                            body {
+                                font-family: 'Microsoft YaHei', Arial, sans-serif;
+                                line-height: 1.6;
+                                color: #333;
+                                background-color: #f9f9f9;
+                            }
+                            
+                            .container {
+                                max-width: 1200px;
+                                margin: 0 auto;
+                                padding: 0 20px;
+                            }
+                            
+                            header {
+                                background: linear-gradient(135deg, #4CAF50, #2E7D32);
+                                color: white;
+                                padding: 1rem 0;
+                                position: sticky;
+                                top: 0;
+                                z-index: 100;
+                                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                            }
+                            
+                            nav {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                            }
+                            
+                            .logo {
+                                font-size: 1.8rem;
+                                font-weight: bold;
+                                display: flex;
+                                align-items: center;
+                            }
+                            
+                            .logo span {
+                                color: #FFEB3B;
+                            }
+                            
+                            .nav-links {
+                                display: flex;
+                                list-style: none;
+                            }
+                            
+                            .nav-links li {
+                                margin-left: 2rem;
+                            }
+                            
+                            .nav-links a {
+                                color: white;
+                                text-decoration: none;
+                                transition: color 0.3s;
+                            }
+                            
+                            .nav-links a:hover {
+                                color: #FFEB3B;
+                            }
+                            
+                            .product-detail-page {
+                                padding: 4rem 0;
+                            }
+                            
+                            .product-detail-container {
+                                background: white;
+                                border-radius: 10px;
+                                overflow: hidden;
+                                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                                max-width: 800px;
+                                margin: 0 auto;
+                            }
+                            
+                            .product-detail-header {
+                                display: flex;
+                                padding: 2rem;
+                                border-bottom: 1px solid #eee;
+                            }
+                            
+                            .product-detail-image {
+                                width: 300px;
+                                height: 300px;
+                                background-color: #e8f5e8;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 5rem;
+                                margin-right: 2rem;
+                            }
+                            
+                            .product-detail-info {
+                                flex: 1;
+                            }
+                            
+                            .product-detail-name {
+                                font-size: 2rem;
+                                color: #2E7D32;
+                                margin-bottom: 1rem;
+                            }
+                            
+                            .product-detail-price {
+                                font-size: 1.5rem;
+                                color: #FF9800;
+                                font-weight: bold;
+                                margin-bottom: 1rem;
+                            }
+                            
+                            .add-to-cart {
+                                background-color: #FF9800;
+                                color: white;
+                                padding: 12px 30px;
+                                border: none;
+                                border-radius: 5px;
+                                font-size: 1.1rem;
+                                cursor: pointer;
+                                transition: background-color 0.3s;
+                            }
+                            
+                            .add-to-cart:hover {
+                                background-color: #F57C00;
+                            }
+                            
+                            .product-detail-content {
+                                padding: 2rem;
+                            }
+                            
+                            .product-detail-desc {
+                                font-size: 1.1rem;
+                                line-height: 1.8;
+                                margin-bottom: 2rem;
+                            }
+                            
+                            .detail-back {
+                                display: block;
+                                text-align: center;
+                                margin: 2rem auto;
+                                background-color: #2E7D32;
+                                color: white;
+                                padding: 12px 30px;
+                                border: none;
+                                border-radius: 25px;
+                                font-size: 1.1rem;
+                                cursor: pointer;
+                                transition: background-color 0.3s;
+                                text-decoration: none;
+                                width: 200px;
+                            }
+                            
+                            .detail-back:hover {
+                                background-color: #1B5E20;
+                            }
+                            
+                            footer {
+                                background: #333;
+                                color: white;
+                                text-align: center;
+                                padding: 2rem 0;
+                            }
+                            
+                            @media (max-width: 768px) {
+                                .product-detail-header {
+                                    flex-direction: column;
+                                    text-align: center;
+                                }
+                                
+                                .product-detail-image {
+                                    width: 100%;
+                                    margin-right: 0;
+                                    margin-bottom: 1rem;
+                                }
+                                
+                                .nav-links {
+                                    display: none;
+                                }
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <header>
+                            <div class="container">
+                                <nav>
+                                    <div class="logo">拉吾尤摩<span>(Love You More)</span></div>
+                                    <ul class="nav-links">
+                                        <li><a href="index.html">首页</a></li>
+                                        <li><a href="story.html">品牌故事</a></li>
+                                        <li><a href="products.html">产品中心</a></li>
+                                        <li><a href="knowledge.html">水果知识</a></li>
+                                        <li><a href="contact.html">联系我们</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </header>
+                        
+                        <section class="product-detail-page">
+                            <div class="container">
+                                <div class="product-detail-container">
+                                    <div class="product-detail-header">
+                                        <div class="product-detail-image">${product.image}</div>
+                                        <div class="product-detail-info">
+                                            <h1 class="product-detail-name">${product.name}</h1>
+                                            <p class="product-detail-price">${product.price}</p>
+                                            <p>${product.desc}</p>
+                                        </div>
+                                    </div>
+                                    <div class="product-detail-content">
+                                        <h2>产品详情</h2>
+                                        <p class="product-detail-desc">${product.detail}</p>
+                                    </div>
+                                </div>
+                                <a href="products.html" class="detail-back">返回产品列表</a>
+                            </div>
+                        </section>
+						<footer>
+							<div class="container">
+								<p>版权所有：东莞市多自爱贸易有限公司 &copy; 2026 拉吾尤摩(Love You More).  | 专注绿色健康水果 | 连接优质果园与健康生活</p>
+							</div>
+						</footer>
+											
+                        <script>
+                            document.querySelector('.detail-back').addEventListener('click', function(e) {
+                                e.preventDefault();
+                                history.back();
+                            });
+                        <\/script>
+                    </body>
+                    </html>
+                `;
+                
+                // 打开新窗口显示详情
+                const newWindow = window.open('', '_blank');
+                newWindow.document.write(detailPage);
+                newWindow.document.close();
+            }
+        }
+
+        // 初始化页面
+        renderProducts(currentPage);
+        renderPagination();
+    </script>
+</body>
+</html>

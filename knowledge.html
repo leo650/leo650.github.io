@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+    <title>水果知识 - 拉吾尤摩(Love You More)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 导航栏 */
+        header {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: #FFEB3B;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #FFEB3B;
+        }
+        
+        /* 页面标题 */
+        .page-hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+            url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%234CAF50"/><circle cx="20" cy="20" r="5" fill="%23FFCDD2"/><circle cx="50" cy="30" r="7" fill="%23FFF9C4"/><circle cx="80" cy="25" r="6" fill="%23E1F5FE"/><circle cx="30" cy="70" r="8" fill="%23FCE4EC"/><circle cx="70" cy="60" r="5" fill="%23E8F5E8"/></svg>');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .page-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* 知识列表 */
+        .knowledge-section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2E7D32;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #666;
+        }
+        
+        .knowledge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .knowledge-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .knowledge-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .knowledge-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+        
+        .knowledge-card h3 {
+            color: #2E7D32;
+            margin-bottom: 1rem;
+        }
+        
+        .knowledge-card p {
+            color: #666;
+            margin-bottom: 1rem;
+            height: 80px;
+            overflow: hidden;
+        }
+        
+        /* 分页导航 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+            gap: 0.5rem;
+        }
+        
+        .pagination button {
+            padding: 10px 15px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .pagination button:hover {
+            background-color: #e8f5e8;
+        }
+        
+        .pagination button.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">拉吾尤摩<span>(Love You More)</span></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="story.html">品牌故事</a></li>
+                    <li><a href="products.html">产品中心</a></li>
+                    <li><a href="knowledge.html">水果知识</a></li>
+                    <li><a href="contact.html">联系我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 页面标题 -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>水果知识</h1>
+            <p>了解水果的营养价值，享受健康美味生活</p>
+        </div>
+    </section>
+
+    <!-- 知识列表 -->
+    <section class="knowledge-section">
+        <div class="container">
+            <h2 class="section-title">水果知识库</h2>
+            <p class="section-subtitle">探索水果的奥秘，发现健康生活的秘诀</p>
+            <div class="knowledge-grid" id="knowledgeGrid">
+                <!-- 知识卡片将通过JavaScript动态生成 -->
+            </div>
+            
+            <!-- 分页导航 -->
+            <div class="pagination" id="pagination">
+                <!-- 分页按钮将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </section>
+
+       <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>版权所有：东莞市多自爱贸易有限公司 &copy; 2026 拉吾尤摩(Love You More).  | 专注绿色健康水果 | 连接优质果园与健康生活</p>
+        </div>
+    </footer>
+
+    <script>
+        // 知识数据
+        const knowledgeItems = [
+            {
+                id: 1,
+                title: "苹果的营养价值",
+                icon: "🍎",
+                summary: "苹果含有丰富的膳食纤维、维生素C和抗氧化物质。每天一个苹果有助于降低胆固醇，增强免疫力，促进消化系统健康。",
+                content: "苹果是一种低热量、高营养的水果，富含维生素C、维生素K、钾和抗氧化剂。苹果中的果胶是一种可溶性纤维，有助于降低胆固醇水平，改善肠道健康。研究表明，经常食用苹果可以降低患心脏病、糖尿病和某些癌症的风险。苹果还含有槲皮素，这是一种强大的抗氧化剂，有助于减少炎症和保护大脑健康。"
+            },
+            {
+                id: 2,
+                title: "柑橘类水果的益处",
+                icon: "🍊",
+                summary: "柑橘类水果富含维生素C，具有抗氧化作用，能增强免疫系统，预防感冒。同时含有丰富的柠檬酸，有助于促进新陈代谢。",
+                content: "柑橘类水果包括橙子、柚子、柠檬、葡萄柚等，它们共同的特点是富含维生素C，这是一种强大的抗氧化剂，有助于增强免疫系统，预防感冒和其他感染。柑橘类水果还含有类黄酮，这是一种植物化合物，具有抗炎和抗氧化作用。此外，柑橘类水果中的柠檬酸有助于促进消化，改善身体对铁的吸收，并可能有助于预防肾结石。"
+            },
+            {
+                id: 3,
+                title: "葡萄的健康功效",
+                icon: "🍇",
+                summary: "葡萄含有多种抗氧化剂，特别是白藜芦醇，有助于保护心血管健康。紫色葡萄还富含花青素，具有抗衰老功效。",
+                content: "葡萄不仅美味，还富含多种有益健康的化合物。其中最重要的是白藜芦醇，这是一种强效抗氧化剂，存在于葡萄皮中，有助于保护心脏健康，降低血压，减少炎症。葡萄还富含其他抗氧化剂，如花青素和儿茶素，这些物质有助于对抗自由基损伤，延缓衰老过程。葡萄中的天然糖分能快速补充能量，适合运动后食用。"
+            },
+            {
+                id: 4,
+                title: "草莓的营养成分",
+                icon: "🍓",
+                summary: "草莓富含维生素C、叶酸和锰。低热量高营养，有助于皮肤健康，促进血液循环，是理想的美容水果。",
+                content: "草莓是维生素C含量最高的水果之一，每100克草莓含有约60毫克维生素C，几乎相当于一个橙子的含量。草莓还富含叶酸、锰、钾和抗氧化剂。这些营养素有助于增强免疫系统，促进细胞修复，维护皮肤健康。草莓中的抗氧化剂有助于减少慢性疾病的风险，如心脏病和某些癌症。由于其低热量和高营养价值，草莓是减肥期间的理想零食。"
+            },
+            {
+                id: 5,
+                title: "柠檬的妙用",
+                icon: "🍋",
+                summary: "柠檬含有丰富的维生素C和柠檬酸，具有美白、抗氧化的作用。柠檬水还能帮助消化，促进体内毒素排出。",
+                content: "柠檬是柑橘类水果中维生素C含量最高的之一，同时还富含柠檬酸、类黄酮和抗氧化剂。柠檬酸有助于促进消化，刺激肝脏产生胆汁，帮助分解食物。柠檬中的维生素C是合成胶原蛋白的重要原料，有助于保持皮肤弹性和光泽。柠檬水可以碱化体液，帮助平衡体内pH值，促进整体健康。柠檬还具有抗菌和抗炎特性，有助于预防感染。"
+            },
+            {
+                id: 6,
+                title: "桃子的选择技巧",
+                icon: "🍑",
+                summary: "选择桃子时应挑选表皮有绒毛、颜色均匀、手感稍软的。成熟的桃子香味浓郁，果肉饱满，甜度适中。",
+                content: "挑选优质桃子有几个关键点：首先看外观，成熟的桃子通常呈现均匀的红色或黄色，表皮有自然的绒毛。其次闻气味，成熟的桃子会有浓郁的果香。用手轻按，稍微变软的桃子表示成熟度较高。桃子富含维生素A、维生素C、钾和纤维，有助于维持视力健康，增强免疫力，促进消化。选择当季新鲜的桃子，营养价值最高，口感也最佳。"
+            },
+            {
+                id: 7,
+                title: "蓝莓的抗氧化作用",
+                icon: "🫐",
+                summary: "蓝莓被称为'超级水果'，富含花青素，具有强大的抗氧化能力，有助于改善记忆力和保护眼睛健康。",
+                content: "蓝莓被誉为'超级水果'，因为其抗氧化能力在所有常见水果中名列前茅。蓝莓富含花青素、维生素C、维生素K和锰。这些抗氧化剂有助于中和自由基，减少氧化应激，从而降低慢性疾病的风险。研究表明，蓝莓有助于改善大脑功能，增强记忆力，延缓认知衰退。蓝莓中的花青素还对眼睛健康有益，有助于保护视网膜免受光损伤。"
+            },
+            {
+                id: 8,
+                title: "香蕉的营养价值",
+                icon: "🍌",
+                summary: "香蕉富含钾元素，有助于调节血压和维持心脏健康。同时含有天然糖分，是理想的运动前后的能量补充。",
+                content: "香蕉是一种营养丰富且易于消化的水果，富含钾、维生素B6、维生素C和纤维。钾是维持正常血压和心脏功能的重要矿物质，一根中等大小的香蕉就能提供约10%的日需钾量。香蕉中的天然糖分（葡萄糖、果糖和蔗糖）能快速提供能量，使其成为运动员的理想选择。香蕉还含有色氨酸，这是一种制造血清素的前体物质，有助于改善情绪。"
+            },
+            {
+                id: 9,
+                title: "猕猴桃的维生素C含量",
+                icon: "🥝",
+                summary: "猕猴桃的维生素C含量是橙子的两倍，有助于增强免疫力，促进铁吸收，维护皮肤健康。",
+                content: "猕猴桃是维生素C含量最高的水果之一，每100克猕猴桃含有约92.7毫克维生素C，几乎是橙子的两倍。猕猴桃还富含维生素K、维生素E、叶酸、钾和抗氧化剂。猕猴桃中的酶（猕猴桃素）有助于消化蛋白质，改善消化功能。研究表明，经常食用猕猴桃可以增强免疫系统，减少感冒的发生率，同时有助于降低血液凝固风险，改善心血管健康。"
+            },
+            {
+                id: 10,
+                title: "西瓜的补水功效",
+                icon: "🍉",
+                summary: "西瓜含水量高达92%，是夏季理想的补水水果。同时富含番茄红素，有助于保护皮肤免受紫外线伤害。",
+                content: "西瓜是含水量最高的水果之一，高达92%，是夏季补充水分的理想选择。西瓜富含番茄红素、维生素A、维生素C和瓜氨酸。番茄红素是一种强效抗氧化剂，有助于保护皮肤免受紫外线伤害，降低某些癌症的风险。瓜氨酸有助于放松血管，可能有助于降低血压。西瓜还含有少量的钾和镁，有助于维持电解质平衡，预防肌肉痉挛。"
+            },
+            {
+                id: 11,
+                title: "橙子的免疫增强作用",
+                icon: "🟠",
+                summary: "橙子富含维生素C和其他抗氧化剂，能够增强免疫系统功能，预防感冒和其他感染性疾病。",
+                content: "橙子是维生素C的绝佳来源，同时富含叶酸、钾、维生素B1和抗氧化剂。橙子中的类黄酮（如橙皮苷）具有抗炎和抗过敏作用。研究表明，经常食用橙子可以增强免疫系统，提高身体对感染的抵抗力。橙子中的纤维有助于维持肠道健康，改善消化功能。橙子的天然糖分提供即时能量，而其丰富的营养素则支持长期健康。"
+            },
+            {
+                id: 12,
+                title: "芒果的维生素A含量",
+                icon: "🥭",
+                summary: "芒果富含维生素A，有助于维护视力健康，增强免疫系统功能，促进皮肤健康。",
+                content: "芒果富含维生素A、维生素C、维生素E、叶酸和纤维。维生素A对维护视力健康至关重要，特别是在弱光环境下的视觉适应。芒果中的β-胡萝卜素是一种强效抗氧化剂，在体内转化为维生素A。芒果还含有芒果苷，这是一种特殊的抗氧化剂，具有抗炎和神经保护作用。芒果的天然甜味和奶油般质地使其成为受欢迎的水果。"
+            }
+        ];
+
+        // 分页配置
+        const itemsPerPage = 6;
+        let currentPage = 1;
+        const totalPages = Math.ceil(knowledgeItems.length / itemsPerPage);
+
+        // 渲染知识列表
+        function renderKnowledge(page) {
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageItems = knowledgeItems.slice(startIndex, endIndex);
+            
+            const knowledgeGrid = document.getElementById('knowledgeGrid');
+            knowledgeGrid.innerHTML = '';
+            
+            pageItems.forEach(item => {
+                const knowledgeCard = document.createElement('div');
+                knowledgeCard.className = 'knowledge-card';
+                knowledgeCard.onclick = () => showKnowledgeDetail(item.id);
+                
+                knowledgeCard.innerHTML = `
+                    <div class="knowledge-icon">${item.icon}</div>
+                    <h3>${item.title}</h3>
+                    <p>${item.summary}</p>
+                `;
+                
+                knowledgeGrid.appendChild(knowledgeCard);
+            });
+        }
+
+        // 渲染分页导航
+        function renderPagination() {
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+            
+            // 上一页按钮
+            if (currentPage > 1) {
+                const prevButton = document.createElement('button');
+                prevButton.textContent = '上一页';
+                prevButton.onclick = () => changePage(currentPage - 1);
+                pagination.appendChild(prevButton);
+            }
+            
+            // 页码按钮
+            for (let i = 1; i <= totalPages; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.textContent = i;
+                pageButton.className = i === currentPage ? 'active' : '';
+                pageButton.onclick = () => changePage(i);
+                pagination.appendChild(pageButton);
+            }
+            
+            // 下一页按钮
+            if (currentPage < totalPages) {
+                const nextButton = document.createElement('button');
+                nextButton.textContent = '下一页';
+                nextButton.onclick = () => changePage(currentPage + 1);
+                pagination.appendChild(nextButton);
+            }
+        }
+
+        // 切换页面
+        function changePage(page) {
+            currentPage = page;
+            renderKnowledge(currentPage);
+            renderPagination();
+        }
+
+        // 显示知识详情（模拟跳转）
+        function showKnowledgeDetail(itemId) {
+            const item = knowledgeItems.find(k => k.id === itemId);
+            if (item) {
+                // 创建一个临时的详情页面
+                const detailPage = `
+                    <!DOCTYPE html>
+                    <html lang="zh-CN">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+						<link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+                        <title>${item.title} - 水果知识详情 - 拉吾尤摩(Love You More)</title>
+                        <style>
+                            * {
+                                margin: 0;
+                                padding: 0;
+                                box-sizing: border-box;
+                            }
+                            
+                            body {
+                                font-family: 'Microsoft YaHei', Arial, sans-serif;
+                                line-height: 1.6;
+                                color: #333;
+                                background-color: #f9f9f9;
+                            }
+                            
+                            .container {
+                                max-width: 1200px;
+                                margin: 0 auto;
+                                padding: 0 20px;
+                            }
+                            
+                            header {
+                                background: linear-gradient(135deg, #4CAF50, #2E7D32);
+                                color: white;
+                                padding: 1rem 0;
+                                position: sticky;
+                                top: 0;
+                                z-index: 100;
+                                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                            }
+                            
+                            nav {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                            }
+                            
+                            .logo {
+                                font-size: 1.8rem;
+                                font-weight: bold;
+                                display: flex;
+                                align-items: center;
+                            }
+                            
+                            .logo span {
+                                color: #FFEB3B;
+                            }
+                            
+                            .nav-links {
+                                display: flex;
+                                list-style: none;
+                            }
+                            
+                            .nav-links li {
+                                margin-left: 2rem;
+                            }
+                            
+                            .nav-links a {
+                                color: white;
+                                text-decoration: none;
+                                transition: color 0.3s;
+                            }
+                            
+                            .nav-links a:hover {
+                                color: #FFEB3B;
+                            }
+                            
+                            .knowledge-detail-page {
+                                padding: 4rem 0;
+                            }
+                            
+                            .knowledge-detail-container {
+                                background: white;
+                                border-radius: 10px;
+                                overflow: hidden;
+                                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                                max-width: 800px;
+                                margin: 0 auto;
+                            }
+                            
+                            .knowledge-detail-header {
+                                display: flex;
+                                align-items: center;
+                                padding: 2rem;
+                                background: #e8f5e8;
+                                border-bottom: 1px solid #eee;
+                            }
+                            
+                            .knowledge-detail-icon {
+                                font-size: 4rem;
+                                margin-right: 1.5rem;
+                                color: #4CAF50;
+                            }
+                            
+                            .knowledge-detail-title {
+                                font-size: 2rem;
+                                color: #2E7D32;
+                            }
+                            
+                            .knowledge-detail-content {
+                                padding: 2rem;
+                            }
+                            
+                            .knowledge-detail-text {
+                                font-size: 1.1rem;
+                                line-height: 1.8;
+                                margin-bottom: 2rem;
+                            }
+                            
+                            .detail-back {
+                                display: block;
+                                text-align: center;
+                                margin: 2rem auto;
+                                background-color: #2E7D32;
+                                color: white;
+                                padding: 12px 30px;
+                                border: none;
+                                border-radius: 25px;
+                                font-size: 1.1rem;
+                                cursor: pointer;
+                                transition: background-color 0.3s;
+                                text-decoration: none;
+                                width: 200px;
+                            }
+                            
+                            .detail-back:hover {
+                                background-color: #1B5E20;
+                            }
+                            
+                            footer {
+                                background: #333;
+                                color: white;
+                                text-align: center;
+                                padding: 2rem 0;
+                            }
+                            
+                            @media (max-width: 768px) {
+                                .knowledge-detail-header {
+                                    flex-direction: column;
+                                    text-align: center;
+                                }
+                                
+                                .knowledge-detail-icon {
+                                    margin-right: 0;
+                                    margin-bottom: 1rem;
+                                }
+                                
+                                .nav-links {
+                                    display: none;
+                                }
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <header>
+                            <div class="container">
+                                <nav>
+                                    <div class="logo">拉吾尤摩<span>(Love You More)</span></div>
+                                    <ul class="nav-links">
+                                        <li><a href="index.html">首页</a></li>
+                                        <li><a href="story.html">品牌故事</a></li>
+                                        <li><a href="products.html">产品中心</a></li>
+                                        <li><a href="knowledge.html">水果知识</a></li>
+                                        <li><a href="contact.html">联系我们</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </header>
+                        
+                        <section class="knowledge-detail-page">
+                            <div class="container">
+                                <div class="knowledge-detail-container">
+                                    <div class="knowledge-detail-header">
+                                        <div class="knowledge-detail-icon">${item.icon}</div>
+                                        <h1 class="knowledge-detail-title">${item.title}</h1>
+                                    </div>
+                                    <div class="knowledge-detail-content">
+                                        <p class="knowledge-detail-text">${item.content}</p>
+                                    </div>
+                                </div>
+                                <a href="knowledge.html" class="detail-back">返回知识列表</a>
+                            </div>
+                        </section>
+						<footer>
+							<div class="container">
+								<p>版权所有：东莞市多自爱贸易有限公司 &copy; 2026 拉吾尤摩(Love You More).  | 专注绿色健康水果 | 连接优质果园与健康生活</p>
+							</div>
+						</footer>
+											
+                        <script>
+                            document.querySelector('.detail-back').addEventListener('click', function(e) {
+                                e.preventDefault();
+                                history.back();
+                            });
+                        <\/script>
+                    </body>
+                    </html>
+                `;
+                
+                // 打开新窗口显示详情
+                const newWindow = window.open('', '_blank');
+                newWindow.document.write(detailPage);
+                newWindow.document.close();
+            }
+        }
+
+        // 初始化页面
+        renderKnowledge(currentPage);
+        renderPagination();
+    </script>
+</body>
+</html>

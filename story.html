@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+    <title>品牌故事 - 拉吾尤摩(Love You More)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 导航栏 */
+        header {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: #FFEB3B;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #FFEB3B;
+        }
+        
+        /* 页面主体 */
+        .page-hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+            url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%234CAF50"/><circle cx="20" cy="20" r="5" fill="%23FFCDD2"/><circle cx="50" cy="30" r="7" fill="%23FFF9C4"/><circle cx="80" cy="25" r="6" fill="%23E1F5FE"/><circle cx="30" cy="70" r="8" fill="%23FCE4EC"/><circle cx="70" cy="60" r="5" fill="%23E8F5E8"/></svg>');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .page-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .story-page-content {
+            padding: 4rem 0;
+        }
+        
+        .story-page-text {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .story-page-text h2 {
+            font-size: 2rem;
+            color: #2E7D32;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .story-page-text h3 {
+            font-size: 1.5rem;
+            color: #2E7D32;
+            margin: 2rem 0 1rem 0;
+        }
+        
+        .story-page-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        .story-page-image {
+            text-align: center;
+            font-size: 8rem;
+            margin: 2rem 0;
+            color: #4CAF50;
+        }
+        
+        .back-to-home {
+            display: block;
+            text-align: center;
+            margin: 2rem auto;
+            background-color: #FF9800;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            width: 200px;
+        }
+        
+        .back-to-home:hover {
+            background-color: #F57C00;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .story-page-text {
+                padding: 2rem;
+                margin: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">拉吾尤摩<span>(Love You More)</span></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="story.html">品牌故事</a></li>
+                    <li><a href="products.html">产品中心</a></li>
+                    <li><a href="knowledge.html">水果知识</a></li>
+                    <li><a href="contact.html">联系我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 页面标题 -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>品牌故事</h1>
+            <p>源于对健康生活的执着追求，始于对绿色果园的信任合作</p>
+        </div>
+    </section>
+
+    <!-- 品牌故事详细内容 -->
+    <section class="story-page-content">
+        <div class="container">
+            <div class="story-page-text">
+                <h2>拉吾尤摩(Love You More)品牌故事</h2>
+                
+                <div class="story-page-image">🌱</div>
+                
+                <h3>我们的初心</h3>
+                <p>拉吾尤摩(Love You More)成立于2024年，由一群热爱健康生活、关注食品安全的创业者发起。在快节奏的现代生活中，我们深感人们对健康饮食的渴望和对食品品质的担忧。市场上虽然水果种类繁多，但真正安全、健康、高品质的水果却并不容易找到。我们深知现代人对健康的追求和对食品品质的严苛要求，因此决定建立一座桥梁，连接对品质有严格要求的消费者与经验丰富的绿色果园。</p>
+                
+                <h3>我们的使命</h3>
+                <p>我们致力于成为绿色水果领域的专家，通过严格的筛选机制，只与那些坚持生态种植、无污染生产的果园合作。从土壤检测到果实采摘，从储存运输到配送上门，我们全程监控每一个环节，确保您收到的每一颗水果都达到最高标准。</p>
+                
+                <p>我们的专业团队会实地考察每一个合作果园，了解其种植环境、管理模式和生产流程。只有符合我们严格标准的果园才能成为我们的合作伙伴。我们不仅关注水果的外观和口感，更重视其内在的营养价值和安全性。</p>
+                
+                <h3>我们的愿景</h3>
+                <p>让每一个家庭都能享受到来自大自然的纯净美味，让健康的生活方式成为每个人的日常。我们希望通过拉吾尤摩的努力，让更多人认识到优质水果对健康的重要性，推动整个行业向更绿色、更可持续的方向发展。</p>
+                
+                <h3>我们的价值观</h3>
+                <p><strong>诚信为本：</strong>我们对每一位客户承诺，所售出的每一份水果都经过严格的质量把控，绝不妥协。我们相信，只有诚实守信，才能赢得客户的长期信任。</p>
+                
+                <p><strong>环保优先：</strong>我们支持可持续农业发展，鼓励果农采用生态友好的种植方法，保护我们共同的地球家园。我们优先选择那些采用有机肥料、生物防治等环保措施的果园作为合作伙伴。</p>
+                
+                <p><strong>客户至上：</strong>我们倾听每一位客户的声音，不断改进服务，努力满足大家对健康水果的需求。客户的满意是我们前进的动力，我们会持续优化产品和服务，为大家提供更好的体验。</p>
+                
+                <h3>我们的成长历程</h3>
+                <p>从最初的小型创业团队到现在拥有众多忠实客户的知名品牌，我们经历了许多挑战和机遇。每一步的成长都离不开客户的信任和支持，也离不开合作伙伴的共同努力。</p>
+                
+                <p>我们从最初的3个合作果园开始，逐步扩展到现在的遍布全国的50多个优质果园基地。我们的产品线也从最初的几种水果扩展到现在的涵盖四季、覆盖全国的上百种优质水果。</p>
+                
+                <h3>未来的发展方向</h3>
+                <p>展望未来，我们将继续秉承初心，不断提升产品质量和服务水平。我们计划进一步扩大合作果园规模，引入更多特色水果品种，满足不同地区客户的需求。同时，我们也将加强科技创新，利用大数据和物联网技术提升供应链效率，确保水果的新鲜度和品质。</p>
+                
+                <a href="index.html" class="back-to-home">返回首页</a>
+            </div>
+        </div>
+    </section>
+
+       <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>版权所有：东莞市多自爱贸易有限公司 &copy; 2026 拉吾尤摩(Love You More).  | 专注绿色健康水果 | 连接优质果园与健康生活</p>
+        </div>
+    </footer>
+
+    <script>
+        // 返回首页按钮点击事件
+        document.querySelector('.back-to-home').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
