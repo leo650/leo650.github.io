@@ -1,0 +1,233 @@
+ <!DOCTYPE html>
+                    <html lang="zh-CN">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+						<link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+                        <title>新疆阿克苏苹果 - 产品详情 - 拉吾尤摩(Love You More)</title>
+                        <style>
+                            * {
+                                margin: 0;
+                                padding: 0;
+                                box-sizing: border-box;
+                            }
+                            
+                            body {
+                                font-family: 'Microsoft YaHei', Arial, sans-serif;
+                                line-height: 1.6;
+                                color: #333;
+                                background-color: #f9f9f9;
+                            }
+                            
+                            .container {
+                                max-width: 1200px;
+                                margin: 0 auto;
+                                padding: 0 20px;
+                            }
+                            
+                            header {
+                                background: linear-gradient(135deg, #4CAF50, #2E7D32);
+                                color: white;
+                                padding: 1rem 0;
+                                position: sticky;
+                                top: 0;
+                                z-index: 100;
+                                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                            }
+                            
+                            nav {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                            }
+                            
+                            .logo {
+                                font-size: 1.8rem;
+                                font-weight: bold;
+                                display: flex;
+                                align-items: center;
+                            }
+                            
+                            .logo span {
+                                color: #FFEB3B;
+                            }
+                            
+                            .nav-links {
+                                display: flex;
+                                list-style: none;
+                            }
+                            
+                            .nav-links li {
+                                margin-left: 2rem;
+                            }
+                            
+                            .nav-links a {
+                                color: white;
+                                text-decoration: none;
+                                transition: color 0.3s;
+                            }
+                            
+                            .nav-links a:hover {
+                                color: #FFEB3B;
+                            }
+                            
+                            .product-detail-page {
+                                padding: 4rem 0;
+                            }
+                            
+                            .product-detail-container {
+                                background: white;
+                                border-radius: 10px;
+                                overflow: hidden;
+                                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                                max-width: 800px;
+                                margin: 0 auto;
+                            }
+                            
+                            .product-detail-header {
+                                display: flex;
+                                padding: 2rem;
+                                border-bottom: 1px solid #eee;
+                            }
+                            
+                            .product-detail-image {
+                                width: 300px;
+                                height: 300px;
+                                background-color: #e8f5e8;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 5rem;
+                                margin-right: 2rem;
+                            }
+                            
+                            .product-detail-info {
+                                flex: 1;
+                            }
+                            
+                            .product-detail-name {
+                                font-size: 2rem;
+                                color: #2E7D32;
+                                margin-bottom: 1rem;
+                            }
+                            
+                            .product-detail-price {
+                                font-size: 1.5rem;
+                                color: #FF9800;
+                                font-weight: bold;
+                                margin-bottom: 1rem;
+                            }
+                            
+                            .add-to-cart {
+                                background-color: #FF9800;
+                                color: white;
+                                padding: 12px 30px;
+                                border: none;
+                                border-radius: 5px;
+                                font-size: 1.1rem;
+                                cursor: pointer;
+                                transition: background-color 0.3s;
+                            }
+                            
+                            .add-to-cart:hover {
+                                background-color: #F57C00;
+                            }
+                            
+                            .product-detail-content {
+                                padding: 2rem;
+                            }
+                            
+                            .product-detail-desc {
+                                font-size: 1.1rem;
+                                line-height: 1.8;
+                                margin-bottom: 2rem;
+                            }
+                            
+                            .detail-back {
+                                display: block;
+                                text-align: center;
+                                margin: 2rem auto;
+                                background-color: #2E7D32;
+                                color: white;
+                                padding: 12px 30px;
+                                border: none;
+                                border-radius: 25px;
+                                font-size: 1.1rem;
+                                cursor: pointer;
+                                transition: background-color 0.3s;
+                                text-decoration: none;
+                                width: 200px;
+                            }
+                            
+                            .detail-back:hover {
+                                background-color: #1B5E20;
+                            }
+                            
+                            footer {
+                                background: #333;
+                                color: white;
+                                text-align: center;
+                                padding: 2rem 0;
+                            }
+                            
+                            @media (max-width: 768px) {
+                                .product-detail-header {
+                                    flex-direction: column;
+                                    text-align: center;
+                                }
+                                
+                                .product-detail-image {
+                                    width: 100%;
+                                    margin-right: 0;
+                                    margin-bottom: 1rem;
+                                }
+                                
+                                .nav-links {
+                                    display: none;
+                                }
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <header>
+                            <div class="container">
+                                <nav>
+                                    <div class="logo">拉吾尤摩<span>(Love You More)</span></div>
+                                    <ul class="nav-links">
+                                        <li><a href="../index.html">首页</a></li>
+                                        <li><a href="../story.html">品牌故事</a></li>
+                                        <li><a href="../products.html">产品中心</a></li>
+                                        <li><a href="../knowledge.html">水果知识</a></li>
+                                        <li><a href="../contact.html">联系我们</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </header>
+                        
+                        <section class="product-detail-page">
+                            <div class="container">
+                                <div class="product-detail-container">
+                                    <div class="product-detail-header">
+                                        <div class="product-detail-image">🍎</div>
+                                        <div class="product-detail-info">
+                                            <h1 class="product-detail-name">新疆阿克苏苹果</h1>
+                                            <p class="product-detail-price">¥38.00 / kg</p>
+                                            <p>来自天山雪水灌溉的苹果，糖分充足，口感脆嫩，被誉为'水果之王'</p>
+                                        </div>
+                                    </div>
+                                    <div class="product-detail-content">
+                                        <h2>产品详情</h2>
+                                        <p class="product-detail-desc">新疆阿克苏苹果以其独特的地理优势和气候条件，孕育出了糖分高、口感脆嫩的优质苹果。这里的苹果在昼夜温差极大的环境中生长，使得糖分充分积累，形成了独特的冰糖心现象。每一口都是甜蜜的享受，富含维生素和膳食纤维，是健康生活的理想选择。
+            </p>
+                                    </div>
+                                </div>
+                                <a href="../products.html" class="detail-back">返回产品列表</a>
+                            </div>
+                        </section>
+						<footer>
+							<div class="container">
+								<p>版权所有：东莞市多自爱贸易有限公司 &copy; 2026 拉吾尤摩(Love You More).  | 专注绿色健康水果 | 连接优质果园与健康生活</p>
+							</div>
+						</footer>                      
+                    </body>
+                    </html>
