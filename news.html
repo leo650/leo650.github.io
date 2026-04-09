@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+    <title>公司动态 - 拉吾尤摩(Love Yourself More)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 导航栏 */
+        header {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: #FFEB3B;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #FFEB3B;
+        }
+        
+        /* 页面标题 */
+        .page-hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+            url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%234CAF50"/><circle cx="20" cy="20" r="5" fill="%23FFCDD2"/><circle cx="50" cy="30" r="7" fill="%23FFF9C4"/><circle cx="80" cy="25" r="6" fill="%23E1F5FE"/><circle cx="30" cy="70" r="8" fill="%23FCE4EC"/><circle cx="70" cy="60" r="5" fill="%23E8F5E8"/></svg>');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .page-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* 动态列表 */
+        .news-section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2E7D32;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #666;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .news-image {
+            height: 200px;
+            background-color: #e8f5e8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        
+        .news-content {
+            padding: 1.5rem;
+        }
+        
+        .news-date {
+            color: #FF9800;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .news-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #2E7D32;
+        }
+        
+        .news-summary {
+            color: #666;
+            margin-bottom: 1rem;
+            height: 80px;
+            overflow: hidden;
+        }
+        
+        .read-more {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+        
+        .read-more:hover {
+            text-decoration: underline;
+        }
+        
+        /* 分页导航 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+            gap: 0.5rem;
+        }
+        
+        .pagination button {
+            padding: 10px 15px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .pagination button:hover {
+            background-color: #e8f5e8;
+        }
+        
+        .pagination button.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">拉吾尤摩<span>(Love Yourself More)</span></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="story.html">品牌故事</a></li>
+					<li><a href="news.html">公司动态</a></li>
+                    <li><a href="products.html">产品中心</a></li>
+                    <li><a href="knowledge.html">水果知识</a></li>
+                    <li><a href="contact.html">联系我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 页面标题 -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>公司动态</h1>
+            <p>关注我们的最新资讯和发展动态</p>
+        </div>
+    </section>
+
+    <!-- 动态列表 -->
+    <section class="news-section">
+        <div class="container">
+            <h2 class="section-title">最新动态</h2>
+            <p class="section-subtitle">了解拉吾尤摩的最新消息和行业动态</p>
+            <div class="news-grid" id="newsGrid">
+                <!-- 动态卡片将通过JavaScript动态生成 -->
+            </div>
+            
+            <!-- 分页导航 -->
+            <div class="pagination" id="pagination">
+                <!-- 分页按钮将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>版权所有：东莞市多自爱贸易有限公司 &copy; 2026 拉吾尤摩(Love Yourself More).  | 专注绿色健康水果 | 连接优质果园与健康生活</p>
+        </div>
+    </footer>
+
+    <script>
+        // 动态数据
+        const newsItems = [
+            {
+                id: 1,
+                title: "拉吾尤摩赣南脐橙荣获'2025年最受欢迎的赣南脐橙小众品牌'称号",
+                date: "2025-12-15",
+                summary: "经过严格的评审，拉吾尤摩凭借在绿色种植、可持续发展方面的突出表现，荣获'2025年最受欢迎的赣南脐橙小众品牌'称号。",
+                content: "拉吾尤摩作为一个专注于绿色健康水果的品牌，一直致力于推广绿色种植技术和可持续发展理念。此次荣获'2025年最受欢迎的赣南脐橙小众品牌'称号，是对我们多年来坚持绿色生产、保障食品安全的肯定。我们将继续秉承'连接优质果园与健康生活'的理念，为广大消费者提供更多优质的绿色水果。"
+            },
+            {
+                id: 2,
+                title: "公司与新疆阿克苏果农建立战略合作关系",
+                date: "2025-12-08",
+                summary: "拉吾尤摩与新疆阿克苏地区多家优质果农达成战略合作协议，确保为消费者提供最正宗的阿克苏苹果。",
+                content: "为了保证产品质量和供应链的稳定性，拉吾尤摩与新疆阿克苏地区的多家优质果农建立了长期稳定的合作关系。通过直接采购模式，我们不仅能够确保苹果的新鲜度和品质，还能够支持当地果农的发展。阿克苏苹果以其独特的地理优势和气候条件，孕育出了糖分高、口感脆嫩的优质苹果，被誉为'水果之王'。"
+            },
+            {
+                id: 3,
+                title: "推出全新有机水果系列，引领健康消费潮流",
+                date: "2025-11-09",
+                summary: "拉吾尤摩正式推出有机水果系列产品，所有产品均通过有机认证，满足消费者对健康食品的需求。",
+                content: "随着消费者对健康饮食的关注度不断提高，拉吾尤摩推出了全新的有机水果系列。该系列产品严格按照有机种植标准进行生产，不使用化学农药和化肥，确保水果的天然品质。所有有机水果均通过国家权威机构的有机认证，让消费者能够放心购买。这一举措标志着拉吾尤摩在绿色健康领域迈出了重要的一步。"
+            },
+            {
+                id: 4,
+                title: "拉吾尤摩与赣南脐橙果农建立战略合作关系：从枝头到心头的双向奔赴",
+                date: "2025-09-05",
+                summary: "拉吾尤摩与赣南地区多位拥有20年以上种植经验的脐橙果农正式建立战略合作关系。",
+                content: "拉吾尤摩（Love Yourself More） 近日宣布，与赣南地区多位拥有20年以上种植经验的脐橙果农正式建立战略合作关系。这不是一份普通的采购合同，而是一次从“买卖”走向“共生”的深度绑定——品牌方与果农团队在种植标准、品质管控、品牌共建等多个层面达成共识，共同守护赣南脐橙的纯正风味。"
+            },
+            {
+                id: 5,
+                title: "爱你老己，爱你的土地，爱你的果农",
+                date: "2025-08-12",
+                summary: "拉吾尤摩的品牌理念是 “爱你老己，多关爱自己一点” 。但这份“爱”，不只面向消费者，也面向这片土地和土地上的人。",
+                content: "与果农建立战略合作关系，就是品牌践行“爱你老己”的方式之一——让辛苦耕耘的果农得到应有的回报，让消费者吃到真正放心的好果子，让土地得到可持续的守护。“我们不是从果农手里收果子，我们和果农是一家人。”品牌负责人这样形容双方的关系。"
+            },
+            {
+                id: 6,
+                title: "未上市即被预定，市场用脚投票",
+                date: "2025-08-01",
+                summary: "由于果品口碑好且产量有限，拉吾尤摩赣南脐橙还没有上市就被脐橙采购商提前预定。",
+                content: "在2025年赣南脐橙品牌综合实力排行榜中，拉吾尤摩综合排名第一，被誉为“高端礼品与家庭精品市场的定义者”。市场在用脚投票。而品牌方和果农团队则用一颗颗橙子，回应这份信任。未来，拉吾尤摩计划将“战略合作”模式复制到更多水果品类上。品牌的目标是月月都有当季好水果——不只是赣南脐橙，还有春天的凤梨、夏天的水蜜桃、秋天的果冻橙……每一种水果，都找到当地最懂它的果农团队，建立同样的深度合作关系。"
+            },
+            {
+                id: 7,
+                title: "爱你老己，从月月当季的一口鲜果开始",
+                date: "2025-04-28",
+                summary: "每天忙着赚钱、顾家、应酬，把最好的都给了别人，却常常亏待了自己。",
+                content: "关爱自己不需要轰轰烈烈——从吃对每一口水果开始，就是最实在的“爱自己”。不是超市里那些打了蜡、催了熟、放了许久的“库存果”；而是从枝头刚摘下，还带着阳光和露水气息的、正当季的那一颗。拉吾尤摩（Love Yourself More） 想对你说：爱你老己，多关爱自己一点。"
+            },
+            {
+                id: 8,
+                title: "启动'爱心果园'公益项目，助力乡村振兴",
+                date: "2025-03-05",
+                summary: "拉吾尤摩启动'爱心果园'公益项目，通过技术支持和销售渠道帮助果农增收致富。",
+                content: "为了履行社会责任，助力乡村振兴，拉吾尤摩正式启动'爱心果园'公益项目。该项目通过提供技术培训、资金支持和稳定的销售渠道，帮助偏远地区的果农提升种植技术和收入水平。首批项目覆盖了江西、云南等地的多个村庄，预计将帮助超过100户果农实现增收。我们希望通过这一项目，实现企业发展与社会价值的双赢。"
+            }
+        ];
+
+        // 分页配置
+        const itemsPerPage = 6;
+        let currentPage = 1;
+        const totalPages = Math.ceil(newsItems.length / itemsPerPage);
+
+        // 渲染动态列表
+        function renderNews(page) {
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageItems = newsItems.slice(startIndex, endIndex);
+            
+            const newsGrid = document.getElementById('newsGrid');
+            newsGrid.innerHTML = '';
+            
+            pageItems.forEach(item => {
+                const newsCard = document.createElement('div');
+                newsCard.className = 'news-card';
+                newsCard.onclick = () => showNewsDetail(item.id);
+                
+                newsCard.innerHTML = `
+                    <div class="news-image">📰</div>
+                    <div class="news-content">
+                        <span class="news-date">${item.date}</span>
+                        <h3 class="news-title">${item.title}</h3>
+                        <p class="news-summary">${item.summary}</p>
+                        <a href="#" class="read-more" onclick="showNewsDetail(${item.id}); event.stopPropagation();">阅读更多 →</a>
+                    </div>
+                `;
+                
+                newsGrid.appendChild(newsCard);
+            });
+        }
+
+        // 渲染分页导航
+        function renderPagination() {
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+            
+            // 上一页按钮
+            if (currentPage > 1) {
+                const prevButton = document.createElement('button');
+                prevButton.textContent = '上一页';
+                prevButton.onclick = () => changePage(currentPage - 1);
+                pagination.appendChild(prevButton);
+            }
+            
+            // 页码按钮
+            for (let i = 1; i <= totalPages; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.textContent = i;
+                pageButton.className = i === currentPage ? 'active' : '';
+                pageButton.onclick = () => changePage(i);
+                pagination.appendChild(pageButton);
+            }
+            
+            // 下一页按钮
+            if (currentPage < totalPages) {
+                const nextButton = document.createElement('button');
+                nextButton.textContent = '下一页';
+                nextButton.onclick = () => changePage(currentPage + 1);
+                pagination.appendChild(nextButton);
+            }
+        }
+
+        // 切换页面
+        function changePage(page) {
+            currentPage = page;
+            renderNews(currentPage);
+            renderPagination();
+        }
+
+        // 显示动态详情（模拟跳转）
+        function showNewsDetail(newsId) {
+                url='news/'+newsId+'.html'
+                // 打开新窗口显示详情
+                const newWindow = window.open(url, '_blank');     
+        }
+
+        // 初始化页面
+        renderNews(currentPage);
+        renderPagination();
+    </script>
+</body>
+</html>
