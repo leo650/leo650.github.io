@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+                    <html lang="zh-CN">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+						<link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+                        <title>公司动态详情 - 拉吾尤摩(Love Yourself More)</title>
+                        <style>
+                            * {
+                                margin: 0;
+                                padding: 0;
+                                box-sizing: border-box;
+                            }
+                            
+                            body {
+                                font-family: 'Microsoft YaHei', Arial, sans-serif;
+                                line-height: 1.6;
+                                color: #333;
+                                background-color: #f9f9f9;
+                            }
+                            
+                            .container {
+                                max-width: 1200px;
+                                margin: 0 auto;
+                                padding: 0 20px;
+                            }
+                            
+                            header {
+                                background: linear-gradient(135deg, #4CAF50, #2E7D32);
+                                color: white;
+                                padding: 1rem 0;
+                                position: sticky;
+                                top: 0;
+                                z-index: 100;
+                                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                            }
+                            
+                            nav {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                            }
+                            
+                            .logo {
+                                font-size: 1.8rem;
+                                font-weight: bold;
+                                display: flex;
+                                align-items: center;
+                            }
+                            
+                            .logo span {
+                                color: #FFEB3B;
+                            }
+                            
+                            .nav-links {
+                                display: flex;
+                                list-style: none;
+                            }
+                            
+                            .nav-links li {
+                                margin-left: 2rem;
+                            }
+                            
+                            .nav-links a {
+                                color: white;
+                                text-decoration: none;
+                                transition: color 0.3s;
+                            }
+                            
+                            .nav-links a:hover {
+                                color: #FFEB3B;
+                            }
+                            
+                            .news-detail-page {
+                                padding: 4rem 0;
+                            }
+                            
+                            .news-detail-container {
+                                background: white;
+                                border-radius: 10px;
+                                overflow: hidden;
+                                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                                max-width: 800px;
+                                margin: 0 auto;
+                            }
+                            
+                            .news-detail-header {
+                                padding: 2rem;
+                                background: #e8f5e8;
+                                border-bottom: 1px solid #eee;
+                            }
+                            
+                            .news-detail-date {
+                                color: #FF9800;
+                                font-weight: bold;
+                                margin-bottom: 0.5rem;
+                                display: block;
+                            }
+                            
+                            .news-detail-title {
+                                font-size: 2rem;
+                                color: #2E7D32;
+                                margin-bottom: 1rem;
+                            }
+                            
+                            .news-detail-content {
+                                padding: 2rem;
+                            }
+                            
+                            .news-detail-text {
+                                font-size: 1.1rem;
+                                line-height: 1.8;
+                                margin-bottom: 2rem;
+                            }
+                            
+                            .detail-back {
+                                display: block;
+                                text-align: center;
+                                margin: 2rem auto;
+                                background-color: #2E7D32;
+                                color: white;
+                                padding: 12px 30px;
+                                border: none;
+                                border-radius: 25px;
+                                font-size: 1.1rem;
+                                cursor: pointer;
+                                transition: background-color 0.3s;
+                                text-decoration: none;
+                                width: 200px;
+                            }
+                            
+                            .detail-back:hover {
+                                background-color: #1B5E20;
+                            }
+                            
+                            footer {
+                                background: #333;
+                                color: white;
+                                text-align: center;
+                                padding: 2rem 0;
+                            }
+                            
+                            @media (max-width: 768px) {
+                                .news-detail-header {
+                                    padding: 1.5rem;
+                                }
+                                
+                                .news-detail-title {
+                                    font-size: 1.5rem;
+                                }
+                                
+                                .nav-links {
+                                    display: none;
+                                }
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <header>
+                            <div class="container">
+                                <nav>
+                                    <div class="logo">拉吾尤摩<span>(Love Yourself More)</span></div>
+                                    <ul class="nav-links">
+                                        <li><a href="../index.html">首页</a></li>
+                                        <li><a href="../story.html">品牌故事</a></li>
+										<li><a href="../news.html">公司动态</a></li>
+                                        <li><a href="../products.html">产品中心</a></li>
+                                        <li><a href="../knowledge.html">水果知识</a></li>
+                                        <li><a href="../contact.html">联系我们</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </header>
+                        
+                        <section class="news-detail-page">
+                            <div class="container">
+                                <div class="news-detail-container">
+                                    <div class="news-detail-header">
+                                        <span class="news-detail-date">2026-04-10</span>
+                                        <h1 class="news-detail-title">连续上热搜，“贵族水果”价格大跳水</h1>
+                                    </div>
+                                    <div class="news-detail-content">
+                                        <p class="news-detail-text">
+										【转自人民网】
+										“蓝莓自由”这个春天刷屏了。
+										以前一小盒动辄二三十块，现在半斤装19.9元，云南产地甚至“按桶卖”，三四十元一斤随便挑。网上“蓝莓价格大跳水”连续冲上热搜，消费者直呼过瘾。
+										价格为啥跌了？很多人第一反应：种太多了呗。但，真相没那么简单。这轮价格回落，不是单纯的产能过剩，而是中国蓝莓从小众高端走向大众普惠的关键一步，更是特色农业转型升级的典型缩影。
+										价格大跳水靠什么
+										2026年3月以来，蓝莓价格较春节期间几乎腰斩。多地超市半斤装从近30元降到19.9元；批发市场一箱从150元降到80元左右。云南优质蓝莓地头价跌到30元/公斤，同比降约50%，而销量却翻倍增长，消费者实打实受益。
+										短期看，云南产区天气好，蓝莓扎堆成熟上市，鲜果集中涌向市场。长期看，产能持续扩张是根本原因——2020年中国蓝莓产量34.7万吨，首次位居全球第一；到2025年，全国产量已达81万吨，五年提升到两倍多。但注意，国内年需求量仍超100万吨，还有约19万吨缺口，“天花板”还没到。
+										云南是中国蓝莓产区的“后起之秀”。这里光照足、温差大，蓝莓甜度高、果粉厚，还能从11月卖到次年5月，填补冬春水果空档。2025年云南产量28万吨，占全国三成。红河州一地种植近15万亩，设施化率超90%，卓莓、佳沃等300多家企业扎堆。
+										技术更是革命性的。当地的南高丛蓝莓配合基质盆栽、水肥一体化，亩产超2000公斤，是传统种植的两倍多，手机就能控水肥；加上国产蓝莓在新鲜度、成本上全面碾压进口果，价格自然越来越亲民。
+										产量全球第一，但最大短板仍是品种——主栽品种几乎全靠进口，高端种苗依赖度超70%，种植户要付高昂专利费。国内自育品种虽有突破，但市场占比不足10%，推广难、认可度低。产业扩张的根基并不牢靠。
+										另一个隐忧是上市太集中。目前全国蓝莓供应仍扎堆3～4月，占全年产量近一半，价格极易被冲击。这也是今年价格“腰斩”的关键原因。
+										价格普跌，但市场不是“一刀切”。普通中果走低，高品质、大果径、特色品种依然抢手。目前，高端礼盒蓝莓单价仍能卖到25～49元。
+										把“蓝莓自由” 变成产业升级的底气
+										价格下来了，产业上去了，农户收益了，这才是“蓝莓自由”的真正含义。
+										第一，攻克种业“芯片”。这是最紧迫的任务。好消息是，国内已有突破：大连大学团队累计申报蓝莓新品种权300余项，获批70项，占全国七成以上；云南企业培育出四大系列自主品种，已申报国家新品种保护42项；红河州成立了“中国南方蓝莓创新中心”。种业翻身仗已经打响。
+										第二，全产业链提质。精深加工是方向。贵州黔东南开发出原浆、果汁、果干、蓝莓酒等30多种产品，年处理鲜果约1万吨。花青素提取、保健品等高附加值产品能大幅提升效益。
+										第三，品牌分层。优质大果走高端渠道，普通果走大众市场，避免“一刀切”价格战。通过品质分级实现差异化竞争，产业才能走得更稳。
+										2026年春天的蓝莓价格“跳水”，是产业转型的必经之路。种业自主、错峰上市、深加工延伸、品牌分层——这些课题既考验智慧，也蕴含机遇。只要攻克核心瓶颈、坚持全链深耕，这抹蓝紫色完全有条件成为中国特色农业高质量发展的标杆。
+										来源：人民日报微信综合央视网、央视三农
+										</p>
+										<img src='images/9_1.jpg' />
+								
+										</div>
+                                </div>
+                                <a href="../news.html" class="detail-back">返回动态列表</a>
+                            </div>
+                        </section>
+                       
+					<footer>
+						<div class="container">
+							<p>版权所有：东莞市多自爱贸易有限公司 &copy; 2026 拉吾尤摩(Love Yourself More).  | 专注绿色健康水果 | 连接优质果园与健康生活</p>
+						</div>
+					</footer>
+                    </body>
+                    </html>
