@@ -1,0 +1,236 @@
+ <!DOCTYPE html>
+                    <html lang="zh-CN">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+						<link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+                        <title>水果的品质 - 水果知识详情 - 拉吾尤摩(Love Yourself More)</title>
+                        <style>
+                            * {
+                                margin: 0;
+                                padding: 0;
+                                box-sizing: border-box;
+                            }
+                            
+                            body {
+                                font-family: 'Microsoft YaHei', Arial, sans-serif;
+                                line-height: 1.6;
+                                color: #333;
+                                background-color: #f9f9f9;
+                            }
+                            
+                            .container {
+                                max-width: 1200px;
+                                margin: 0 auto;
+                                padding: 0 20px;
+                            }
+                            
+                            header {
+                                background: linear-gradient(135deg, #4CAF50, #2E7D32);
+                                color: white;
+                                padding: 1rem 0;
+                                position: sticky;
+                                top: 0;
+                                z-index: 100;
+                                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                            }
+                            
+                            nav {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                            }
+                            
+                            .logo {
+                                font-size: 1.8rem;
+                                font-weight: bold;
+                                display: flex;
+                                align-items: center;
+                            }
+                            
+                            .logo span {
+                                color: #FFEB3B;
+                            }
+                            
+                            .nav-links {
+                                display: flex;
+                                list-style: none;
+                            }
+                            
+                            .nav-links li {
+                                margin-left: 2rem;
+                            }
+                            
+                            .nav-links a {
+                                color: white;
+                                text-decoration: none;
+                                transition: color 0.3s;
+                            }
+                            
+                            .nav-links a:hover {
+                                color: #FFEB3B;
+                            }
+                            
+                            .knowledge-detail-page {
+                                padding: 4rem 0;
+                            }
+                            
+                            .knowledge-detail-container {
+                                background: white;
+                                border-radius: 10px;
+                                overflow: hidden;
+                                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                                max-width: 800px;
+                                margin: 0 auto;
+                            }
+                            
+                            .knowledge-detail-header {
+                                display: flex;
+                                align-items: center;
+                                padding: 2rem;
+                                background: #e8f5e8;
+                                border-bottom: 1px solid #eee;
+                            }
+                            
+                            .knowledge-detail-icon {
+                                font-size: 4rem;
+                                margin-right: 1.5rem;
+                                color: #4CAF50;
+                            }
+                            
+                            .knowledge-detail-title {
+                                font-size: 2rem;
+                                color: #2E7D32;
+                            }
+                            
+                            .knowledge-detail-content {
+                                padding: 2rem;
+                            }
+                            
+                            .knowledge-detail-text {
+                                font-size: 1.1rem;
+                                line-height: 1.8;
+                                margin-bottom: 2rem;
+                            }
+                            
+                            .detail-back {
+                                display: block;
+                                text-align: center;
+                                margin: 2rem auto;
+                                background-color: #2E7D32;
+                                color: white;
+                                padding: 12px 30px;
+                                border: none;
+                                border-radius: 25px;
+                                font-size: 1.1rem;
+                                cursor: pointer;
+                                transition: background-color 0.3s;
+                                text-decoration: none;
+                                width: 200px;
+                            }
+                            
+                            .detail-back:hover {
+                                background-color: #1B5E20;
+                            }
+                            
+                            footer {
+                                background: #333;
+                                color: white;
+                                text-align: center;
+                                padding: 2rem 0;
+                            }
+                            
+                            @media (max-width: 768px) {
+                                .knowledge-detail-header {
+                                    flex-direction: column;
+                                    text-align: center;
+                                }
+                                
+                                .knowledge-detail-icon {
+                                    margin-right: 0;
+                                    margin-bottom: 1rem;
+                                }
+                                
+                                .nav-links {
+                                    display: none;
+                                }
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <header>
+                            <div class="container">
+                                <nav>
+                                    <div class="logo">拉吾尤摩<span>(Love Yourself More)</span></div>
+                                    <ul class="nav-links">
+                                        <li><a href="../index.html">首页</a></li>
+                                        <li><a href="../story.html">品牌故事</a></li>
+										<li><a href="../news.html">公司动态</a></li>
+                                        <li><a href="../products.html">产品中心</a></li>
+                                        <li><a href="../knowledge.html">水果知识</a></li>
+                                        <li><a href="../contact.html">联系我们</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </header>
+                        
+                        <section class="knowledge-detail-page">
+                            <div class="container">
+                                <div class="knowledge-detail-container">
+                                    <div class="knowledge-detail-header">
+                                        <div class="knowledge-detail-icon">🥭</div>
+                                        <h1 class="knowledge-detail-title">品质好的水果最关键的因素</h1>
+                                    </div>
+                                    <div class="knowledge-detail-content">
+                                        <p class="knowledge-detail-text">
+										    从枝头到舌尖，水果的优良品质是一个系统工程，凝结了品种、环境、管理和采后处理的全方位努力。其中最关键的四大支柱如下：
+											🌿 支柱一：先天之选 —— 品种是品质的基石
+											品种由基因决定，是水果品质差异的根本，奠定了水果的风味、色泽、抗病性等基本属性。
+
+											决定风味底色：品种直接决定了水果的内在潜力。例如，“富士”苹果与“嘎啦”苹果的风味差异，就是由其遗传特性决定的。
+
+											适应环境能力：不同品种对环境的适应性不同。选择不适应当地气候的品种，可能导致“橘生淮北则为枳”的尴尬，使果实酸涩难食。
+
+											🌍 支柱二：天地造化 —— 环境是品质的雕塑家
+											适宜的环境是果树和果实健康生长的前提，它将品种的潜力充分释放。关键的环境因素包括：
+
+											光照与温度：光照是水果“增甜”的关键，昼夜温差大的环境有利于糖分积累。适宜的温度范围对果实风味、颜色和口感的形成至关重要，极端温度则会损害品质。
+
+											水分与土壤：在果实发育期，充足且均衡的水分供应至关重要，土壤需要具有良好的排水性和透气性。
+
+											👨‍🌾 支柱三：后天培育 —— 管理是品质的助推器
+											科学细致的田间管理，能最大程度地优化品质，减少病虫害，让水果长得更好看、更好吃。
+
+											精细化施肥：在关键生长期，如猕猴桃的采前40-50天，追施以钾、磷为主的“优果肥”，可以显著改善果实品质。
+
+											科学的水分调控：膨大期需水量大，以支持果实快速长大；成熟期适度控制水分，则可以有效提高果实糖分。
+
+											合理的修剪：通过剪枝改善树冠的通风和透光性，让每个果实都能得到阳光的充分照射，促进均匀着色和糖分积累。
+
+											精准的疏花疏果：控制每棵树的果实数量，确保养分集中供应，结出的果子个头更大、风味更足。
+
+											🚚 支柱四：采后保障 —— 保鲜是品质的守护者
+											水果采摘后仍是鲜活的有机体，不恰当的采后处理会迅速导致品质下降。决定采后品质的关键步骤如下：
+
+											适时采收：采摘过早会导致果实风味寡淡、涩味重；过晚则会变得过软，不耐储运。
+
+											迅速预冷：采摘后，应尽快对果实进行预冷处理，迅速降低其“体温”，能有效抑制呼吸和微生物繁殖，为后续保鲜赢得宝贵时间。
+
+											高效保鲜：完善的冷链物流（低温储运）是长途运输的品质保证，能大大降低损耗。同时，通过气调技术（调节氧气、二氧化碳浓度）也能有效延长保鲜期。
+
+											水果的品质是品种、环境、管理和采后处理这四大支柱共同作用的结果。每一个环节都至关重要，共同决定了我们最终品尝到的风味。
+																					
+										</p>
+                                    </div>
+                                </div>
+                                <a href="../knowledge.html" class="detail-back">返回知识列表</a>
+                            </div>
+                        </section>
+						<footer>
+							<div class="container">
+								<p>版权所有：东莞市多自爱贸易有限公司 &copy; 2026 拉吾尤摩(Love Yourself More).  | 专注绿色健康水果 | 连接优质果园与健康生活</p>
+							</div>
+						</footer>						
+                     
+                    </body>
+                    </html>
