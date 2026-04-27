@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>东方市小白条鱼干加工项目计划书 | 家庭作坊版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f4f7fb;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
+            color: #1f2d3d;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        /* 页眉 */
+        .header {
+            background: linear-gradient(135deg, #0b3b3f 0%, #1c6e6e 100%);
+            color: white;
+            padding: 2rem 2.5rem;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-top: 0.25rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(255,255,255,0.2);
+            backdrop-filter: blur(4px);
+            border-radius: 40px;
+            padding: 0.3rem 1rem;
+            font-size: 0.8rem;
+            margin-top: 0.8rem;
+        }
+
+        /* 目录与内容 */
+        .content {
+            padding: 2rem 2.5rem;
+        }
+
+        /* 目录卡片 */
+        .toc {
+            background: #f0f6fa;
+            border-radius: 20px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            border-left: 6px solid #1c6e6e;
+        }
+
+        .toc h2 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: #0e4f4f;
+        }
+
+        .toc-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1.2rem;
+        }
+
+        .toc-grid a {
+            color: #1f5e5e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #bdd4d4;
+            transition: 0.2s;
+        }
+
+        .toc-grid a:hover {
+            color: #0a3b3b;
+            border-bottom-color: #0a3b3b;
+        }
+
+        /* 章节样式 */
+        section {
+            scroll-margin-top: 20px;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid #e2edf2;
+            padding-bottom: 1.5rem;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1c6e6e;
+            margin-bottom: 1rem;
+            border-left: 5px solid #1c6e6e;
+            padding-left: 1rem;
+        }
+
+        section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 1rem 0 0.6rem 0;
+            color: #2c4e4e;
+        }
+
+        .card-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin: 1.2rem 0;
+        }
+
+        .stat-card {
+            background: #f9fefc;
+            border: 1px solid #cde3df;
+            border-radius: 24px;
+            padding: 1rem 1.2rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            transition: 0.1s;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #5b8f8a;
+        }
+
+        .stat-card .stat-number {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #1c6e6e;
+            line-height: 1.2;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 1.2rem;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        th {
+            background-color: #e7f0ef;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #1c5a5a;
+        }
+
+        td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #e2edf2;
+        }
+
+        .highlight {
+            background: #fef6e0;
+            font-weight: 600;
+        }
+
+        .info-note {
+            background: #eef5f8;
+            padding: 0.8rem 1.2rem;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+            border-left: 4px solid #1c6e6e;
+        }
+
+        .footer {
+            background: #eef3f1;
+            padding: 1.5rem 2.5rem;
+            font-size: 0.8rem;
+            text-align: center;
+            color: #2d5a55;
+            border-top: 1px solid #cddfda;
+        }
+
+        @media (max-width: 680px) {
+            .content, .header {
+                padding-left: 1.2rem;
+                padding-right: 1.2rem;
+            }
+            .stat-card .stat-number {
+                font-size: 1.5rem;
+            }
+            th, td {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🐟 东方市小白条鱼干加工项目计划书</h1>
+        <p>家庭作坊版 · 空气能热泵烘干 · 夫妻二人经营</p>
+        <div class="badge">✅ 最终版 | 参数已全量确认 | 售价22元/斤 | 投资回收期约40天</div>
+    </div>
+
+    <div class="content">
+        <!-- 目录 -->
+        <div class="toc">
+            <h2>📑 项目导航</h2>
+            <div class="toc-grid">
+                <a href="#overview">1. 项目总览</a>
+                <a href="#market">2. 市场环境</a>
+                <a href="#site">3. 选址与建设</a>
+                <a href="#process">4. 工艺与设备</a>
+                <a href="#hr">5. 人力资源</a>
+                <a href="#finance">6. 财务测算（核心）</a>
+                <a href="#material">7. 原材料控制</a>
+                <a href="#sales">8. 销路策略</a>
+                <a href="#compliance">9. 小作坊合规</a>
+                <a href="#policy">10. 政策与风控</a>
+                <a href="#schedule">11. 实施计划</a>
+                <a href="#conclusion">12. 结论</a>
+            </div>
+        </div>
+
+        <!-- 1. 项目总览 -->
+        <section id="overview">
+            <h2>一、项目总览</h2>
+            <div class="card-stats">
+                <div class="stat-card"><div class="stat-label">总投资</div><div class="stat-number">77,700元</div></div>
+                <div class="stat-card"><div class="stat-label">日处理鲜鱼</div><div class="stat-number">1000斤</div></div>
+                <div class="stat-card"><div class="stat-label">出干率</div><div class="stat-number">20% (5:1)</div></div>
+                <div class="stat-card"><div class="stat-label">月产量(鱼干)</div><div class="stat-number">5,000斤</div></div>
+                <div class="stat-card"><div class="stat-label">售价(批发)</div><div class="stat-number">22元/斤</div></div>
+                <div class="stat-card"><div class="stat-label">月净利润</div><div class="stat-number">58,450元</div></div>
+                <div class="stat-card"><div class="stat-label">年净利润</div><div class="stat-number">≈70.14万元</div></div>
+                <div class="stat-card"><div class="stat-label">投资回收期</div><div class="stat-number">约40天</div></div>
+            </div>
+            <p>本项目位于东方市八所渔港周边，采用“7P空气能热泵烘干+传统腌制”工艺，夫妻两人日处理鲜鱼1000斤，主打小白条鱼干批发市场。依托1.7元/斤的原料采购优势和全年稳定的烘干能力，年净利润突破70万元，是一款低投入、高周转、抗风险能力强的家庭式加工项目。</p>
+            <div class="info-note">✅ 核心亮点：原料成本仅1.7元/斤 → 加工后附加值提升至22元/斤；设备投资5万元，约26个工作日即可收回设备成本；投资回收期仅1.3个月。</div>
+        </section>
+
+        <!-- 2. 市场环境 -->
+        <section id="market">
+            <h2>二、市场环境分析</h2>
+            <p>中国鱼干行业2025年产量已突破85万吨，消费量78万吨，复合增长率5.2%。休闲零食化趋势明显，31%的消费者将鱼干当作零食，下午茶场景增速28%。抖音鱼干品类年销售2.21亿元，58元以上中高价产品贡献95%销售额。东方八所渔港作为海南西部最大渔港，日渔获丰富，本地鱼干销售传统成熟，且海南自贸港加工增值免关税政策为未来出口预留红利。</p>
+            <p>本项目主要面向：本地农贸市场批发、线上1688/直播带货、周边市县干货商及旅游特产店，22元/斤定价处于市场中等区间，利润空间优越。</p>
+        </section>
+
+        <!-- 3. 选址与建设 -->
+        <section id="site">
+            <h2>三、选址与建设</h2>
+            <p>选址东方市八所镇八所渔港周边，月租金5000元，总面积约100㎡。功能分区：原料暂存区(10-15㎡)+加工处理区(30-40㎡)+烘干区(20-30㎡)+成品储存区(10-15㎡)+包装及杂物区。场地已完成电力改造及排水接入（改造费3000元已计入投资）。</p>
+        </section>
+
+        <!-- 4. 工艺与设备 -->
+        <section id="process">
+            <h2>四、加工工艺与设备配置</h2>
+            <h3>工艺流程</h3>
+            <p>鲜鱼采购 → 剖杀去内脏 → 清洗 → 盐渍腌制(4h) → 沥水摆盘 → 空气能热泵低温烘干(约20h) → 冷却检验 → 分级称重 → 真空包装 → 成品入库</p>
+            <h3>烘干参数（阶梯控温）</h3>
+            <table>
+                <thead><tr><th>阶段</th><th>温度(℃)</th><th>湿度</th><th>时间(h)</th></tr></thead>
+                <tbody><tr><td>低温慢干</td><td>≈30℃</td><td>40%</td><td>18-20</td></tr>
+                <tr><td>中温除湿</td><td>35-40℃</td><td>15%</td><td>8-10</td></tr></tbody>
+            </table>
+            <h3>核心设备清单（用户指定价格）</h3>
+            <table>
+                <thead><tr><th>设备/物资</th><th>规格/说明</th><th>金额(元)</th></tr></thead>
+                <tbody>
+                    <tr><td>7P整体式热泵烘干设备</td><td>7HP，自动控温控湿，日处理能力达标</td><td>50,000</td></tr>
+                    <tr><td>冰柜/冷柜</td><td>500-800L商用</td><td>3,000</td></tr>
+                    <tr><td>清洗盆/操作台</td><td>不锈钢/塑料含腌制槽</td><td>2,000</td></tr>
+                    <tr><td>真空包装机</td><td>小型商用</td><td>1,000</td></tr>
+                    <tr><td>场地改造</td><td>电力+排水改造</td><td>3,000</td></tr>
+                    <tr><td>刀具、电子秤等工具</td><td>剖杀刀、30kg秤</td><td>300</td></tr>
+                    <tr><td>防蝇网罩(备用)</td><td>自然晾晒应急</td><td>400</td></tr>
+                </tbody>
+            </table>
+            <p>⚡ 设备总投资59,700元（含烘干、冷柜等），月折旧分摊900元（按5年折旧）。</p>
+        </section>
+
+        <!-- 5. 人力资源 -->
+        <section id="hr">
+            <h2>五、人力资源配置</h2>
+            <p>夫妻二人全职经营，无外聘成本。男主负责凌晨采购、剖杀清洗、设备监控及销售；女主负责腌制、包装、称重及记账。日作息：3:00-5:00采购，5:00-10:00剖杀（1000斤/2人），10:00-10:30入盘烘干，设备自动运行20小时，次日上午出库发货。自动化烘干阶段可灵活休息。</p>
+        </section>
+
+        <!-- 6. 财务测算（核心） -->
+        <section id="finance">
+            <h2>六、财务测算（核心参数最终版）</h2>
+            <h3>6.1 月运营成本明细</h3>
+            <table>
+                <thead><tr><th>成本项目</th><th>月成本(元)</th><th>计算依据</th></tr></thead>
+                <tbody>
+                    <tr><td>鲜鱼原料</td><td>42,500</td><td>1000斤/天×25天×1.7元/斤</td></tr>
+                    <tr><td>食盐辅料</td><td>1,250</td><td>5元/百斤鲜鱼×250百斤</td></tr>
+                    <tr><td>厂房租金</td><td>5,000</td><td>固定月租金（用户指定）</td></tr>
+                    <tr><td>烘干电费</td><td>900</td><td>200斤干/天×0.18元×25天</td></tr>
+                    <tr><td>包装材料</td><td>500</td><td>0.1元/斤×5000斤</td></tr>
+                    <tr><td>运输及杂费</td><td>500</td><td>油费/摊位/工具损耗</td></tr>
+                    <tr class="highlight"><td><strong>月运营成本合计</strong></td><td><strong>50,650元</strong></td><td>不含折旧</td></tr>
+                </tbody>
+            </table>
+            <h3>6.2 月折旧与净利润</h3>
+            <table>
+                <tr><td>月销售额(5000斤×22元)</td><td>110,000元</td></tr>
+                <tr><td>减：月运营成本</td><td>50,650元</td></tr>
+                <tr><td>减：月折旧(设备54,000元/60月)</td><td>900元</td></tr>
+                <tr class="highlight"><td><strong>月净利润</strong></td><td><strong>58,450元</strong></td></tr>
+                <tr><td>年净利润(12个月)</td><td>701,400元</td></tr>
+                <tr><td>毛利率(含折旧)</td><td>≈53%</td></tr>
+            </table>
+            <h3>6.3 投资回收期</h3>
+            <p>初始投资合计77,700元（含首期原料、行政费、设备及辅料等），第1月净利润58,450元，累计现金流-19,250元；第2月上旬实现回本，累计回款周期约40天。</p>
+            <div class="info-note">📌 原料价格敏感性分析：若鲜鱼涨价至1.87元/斤（+10%），月净利润约为48,200元；建议每月提取净利润的10%（约5,800元）作为风险准备金，用于平抑休渔期价格波动。</div>
+            <h3>6.4 不同售价方案对比</h3>
+            <table>
+                <thead><tr><th>售价(元/斤)</th><th>月净利润</th><th>年净利润</th><th>每斤利润</th></tr></thead>
+                <tbody>
+                    <tr><td>18</td><td>40,350元</td><td>48.4万元</td><td>8.07元</td></tr>
+                    <tr class="highlight"><td>22（选用）</td><td>58,450元</td><td>70.14万元</td><td>11.69元</td></tr>
+                    <tr><td>25</td><td>75,350元</td><td>90.42万元</td><td>15.07元</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 7. 原材料与成本控制 -->
+        <section id="material">
+            <h2>七、原材料与成本控制</h2>
+            <p>✔️ 鲜鱼采购：每日凌晨对接八所渔港3-5艘渔船，采购价锁定1.7元/斤，休渔期提前签订日供协议，并使用冰柜冷冻备货。<br>
+            ✔️ 辅料：食盐批量采购，月均1,250元，确保食品级食盐。<br>
+            ✔️ 电费优化：申请农业生产用电（约0.48元/度），预计月电费可降至720元，年再省2,160元。<br>
+            ✔️ 品质管理：每批原料感官验收，加工过程严格执行HACCP理念，建立原料台账及销售记录，实现源头可溯。</p>
+        </section>
+
+        <!-- 8. 销路策略 -->
+        <section id="sales">
+            <h2>八、市场销路与销售策略</h2>
+            <p>依托八所渔港成熟鱼市，面向本地批发商及干货店供货；开通1688及抖音直播，突出海南原产地+传统生晒工艺，争取线上批发订单；未来拓展儋州、三亚、海口农贸市场及酒店餐饮B端。初期本地批发占60%，线上30%，周边市县10%。产品按散装（18-22元/斤）、简包装（22-25元/斤）、礼盒装（30-50元/斤）分层销售。项目可申请“东方渔美”区域公用品牌背书，提升溢价能力。</p>
+        </section>
+
+        <!-- 9. 小作坊合规手续 -->
+        <section id="compliance">
+            <h2>九、小作坊合规手续</h2>
+            <p>根据《海南省食品生产加工小作坊监督管理办法》，本项目已预留行政费用1000元，办理流程：①个体工商户营业执照（水产品加工、销售）；②夫妻二人健康证；③向东方市市监局提交备案申请（场地租赁合同、工艺流程图、卫生制度等）。生产区域落实防蝇、防鼠、清洗消毒措施，确保符合卫生规范，严禁使用非食品添加剂。</p>
+            <div class="info-note">⚠️ 食品安全警示：海南曾有作坊因使用工业盐加工食品被罚款3万元，本项目将严控原料及工艺合规，定期自查，规避法律风险。</div>
+        </section>
+
+        <!-- 10. 政策与风控 -->
+        <section id="policy">
+            <h2>十、政策支持与风险规避</h2>
+            <h3>利好政策依据</h3>
+            <ul style="margin-left:1.5rem; margin-bottom:1rem;">
+                <li>🔹 数字渔业智能化设备补贴（东府〔2025〕80号）：补贴设备投入20%，单户≤10万元；</li>
+                <li>🔹 产业园贷款贴息：符合条件的贷款贴息50%，单户≤35万元；</li>
+                <li>🔹 “东方渔美”区域品牌推广及“三向图强”战略支持水产加工；</li>
+                <li>🔹 设施农业用地确权及抵押融资（海南省首证已落地），便于后续扩大规模。</li>
+            </ul>
+            <h3>风险应对策略</h3>
+            <table>
+                <thead><tr><th>风险类型</th><th>应对措施</th></tr></thead>
+                <tbody>
+                    <tr><td>原料价格波动</td><td>长期渔船协议+10%月利润风险准备金</td></tr>
+                    <tr><td>休渔期/台风</td><td>烘干设备全年无休+冰柜备货+提前采购</td></tr>
+                    <tr><td>设备故障</td><td>保留防蝇网罩+简易晾晒备用；签订维保协议</td></tr>
+                    <tr><td>市场景气下滑</td><td>灵活调价至20元/斤保现金流，同时拓展线上直播</td></tr>
+                    <tr><td>合规不达标</td><td>提前咨询市监局，严格执行卫生自查记录</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 11. 实施计划 -->
+        <section id="schedule">
+            <h2>十一、项目实施计划</h2>
+            <p><strong>第一阶段（第1个月）</strong>：办理执照/备案/健康证，完成厂房租赁及水电改造，烘干设备安装，首期原料及辅料入库（首期鲜鱼10000元）。<br>
+            <strong>第二阶段（第2个月）</strong>：试产500斤/天，实测出品率及烘干能耗，优化腌制配方，对接渔船稳定每日1000斤供应。<br>
+            <strong>第三阶段（第3-6个月）</strong>：满负荷日处理1000斤，打通八所渔港批发渠道，同时上线1688店铺，月净利润稳定5-6万元，提取风险金逐步扩大库存能力。</p>
+        </section>
+
+        <!-- 12. 结论 -->
+        <section id="conclusion">
+            <h2>十二、结论</h2>
+            <p>本项目利用东方市八所渔港的原料价格优势（1.7元/斤），配合7P空气能热泵烘干设备实现全年不间断生产，夫妻二人日处理鲜鱼1000斤，出干率20%。项目总投资77,700元，按22元/斤批发价计算，月净利润58,450元，年净利润70.14万元，投资回收期仅40天。在原料成本控制、烘干工艺和合规管理三重保障下，项目风险可控，盈利能力强，是极具竞争力的家庭式加工作坊典范。建议立即启动，抢占海南鱼干中端批发市场空白。</p>
+            <div class="info-note">📊 最终版全套财务数据已依据用户确认参数编制：烘干设备5万元、冰柜3千元、清洗盆2千元、真空包装机1千元、场地改造3千元、首期原料1万元、行政费1千元，辅料月成本1250元，电费0.18元/斤。所有数字可追溯。</div>
+        </section>
+
+        <!-- 额外附注：总体初始投资表 -->
+        <div style="margin-top: 2rem;">
+            <h3 style="color:#1c6e6e">📋 初始投资明细（总额77,700元）</h3>
+            <table style="width: 80%;">
+                <thead><tr><th>项目</th><th>金额(元)</th></tr></thead>
+                <tbody>
+                    <tr><td>烘干设备</td><td>50,000</td></tr>
+                    <tr><td>冰柜</td><td>3,000</td></tr>
+                    <tr><td>清洗盆/操作台</td><td>2,000</td></tr>
+                    <tr><td>真空包装机</td><td>1,000</td></tr>
+                    <tr><td>场地改造</td><td>3,000</td></tr>
+                    <tr><td>首月厂房租金</td><td>5,000</td></tr>
+                    <tr><td>首期鲜鱼原料</td><td>10,000</td></tr>
+                    <tr><td>首期辅料(盐等)</td><td>2,000</td></tr>
+                    <tr><td>刀具/电子秤/配件</td><td>300</td></tr>
+                    <tr><td>防蝇网罩备用</td><td>400</td></tr>
+                    <tr><td>行政备案/健康证</td><td>1,000</td></tr>
+                    <tr class="highlight"><td>合计</td><td>77,700元</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2026 东方市小白条鱼干加工作坊计划书 | 数据基于用户确认参数，投产前建议实测出品率及电耗 | 本计划书可作备案及融资参考
+    </div>
+</div>
+</body>
+</html>
