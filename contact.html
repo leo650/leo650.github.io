@@ -153,6 +153,47 @@
             margin: 0;
             color: #666;
         }
+		
+		      
+        /* 微信二维码样式 */
+        .wechat-qr-section {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+        
+        .wechat-qr-section h4 {
+            color: #2E7D32;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .qr-code-box {
+            display: inline-block;
+            padding: 10px;
+            background: white;
+            border: 1px solid #e8f5e8;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .qr-code-box:hover {
+            transform: scale(1.05);
+        }
+        
+        .qr-code-img {
+            width: 150px;
+            height: 150px;
+            display: block;
+        }
+        
+        .qr-tip {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
         
         .contact-form {
             background: white;
@@ -338,21 +379,21 @@
                             <p>周一至周日 9:00-21:00</p>
                         </div>
                     </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">📱</div>
-                        <div class="contact-text">
-                            <h4>微信客服</h4>
-                            <p>huang2leo</p>
-                        </div>
-                    </div>
-                    
                     <div class="contact-item">
                         <div class="contact-icon">🌐</div>
                         <div class="contact-text">
                             <h4>淘宝店铺</h4>
                             <p>拉吾尤摩品牌店</p>
                         </div>
+                    </div>
+					<!-- 微信二维码模块 -->
+                    <div class="wechat-qr-section">
+                        <h4>加微信客服领好礼</h4>
+                        <div class="qr-code-box">
+                            <!-- 这里使用占位图，请替换为您真实的微信二维码图片 -->
+                            <img src="weixin_qr.jpg" alt="微信二维码" class="qr-code-img">
+                        </div>
+                        <p class="qr-tip">微信号：huang2leo</p>
                     </div>
 					
                 </div>
