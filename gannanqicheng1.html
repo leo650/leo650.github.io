@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>赣南脐橙 · 全年生长周期与管理月历</title>
+    <style>
+        /* ===== 全局重置 & 基础 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
+            background: #fdf8f3;
+            color: #2d2a24;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* ===== 头部 ===== */
+        .header {
+            text-align: center;
+            padding: 2.5rem 1rem 2rem;
+            background: linear-gradient(145deg, #f7ede0, #fef6ed);
+            border-radius: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 8px 30px rgba(180, 100, 30, 0.10);
+            border: 1px solid #f0e0d0;
+        }
+
+        .header h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: #b45f2a;
+            letter-spacing: 2px;
+        }
+
+        .header h1 span {
+            background: #d97c3a;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin-left: 0.75rem;
+            vertical-align: middle;
+            letter-spacing: 1px;
+        }
+
+        .header .sub {
+            margin-top: 0.6rem;
+            font-size: 1.05rem;
+            color: #7a5d44;
+            background: rgba(255, 215, 175, 0.35);
+            display: inline-block;
+            padding: 0.3rem 2rem;
+            border-radius: 40px;
+            backdrop-filter: blur(2px);
+        }
+
+        .header .note {
+            margin-top: 1.2rem;
+            font-size: 0.95rem;
+            color: #7f6b58;
+            background: #fff6ed;
+            padding: 0.8rem 1.8rem;
+            border-radius: 60px;
+            display: inline-block;
+            border: 1px dashed #dbaa7a;
+        }
+
+        /* ===== 月份网格 ===== */
+        .month-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 1.8rem;
+            margin: 2.8rem 0 3.5rem;
+        }
+
+        .month-card {
+            background: #ffffff;
+            border-radius: 1.8rem;
+            box-shadow: 0 6px 24px rgba(160, 100, 50, 0.08);
+            overflow: hidden;
+            border: 1px solid #f0e2d6;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .month-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 40px rgba(160, 100, 50, 0.12);
+        }
+
+        .month-header {
+            padding: 0.9rem 1.5rem;
+            background: linear-gradient(135deg, #f7ede2, #fef3e9);
+            border-bottom: 2px solid #ebd5c0;
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.4rem 1rem;
+        }
+
+        .month-header .month-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #a75820;
+            letter-spacing: 1px;
+        }
+
+        .month-header .month-name small {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #8b6b50;
+            margin-left: 0.4rem;
+        }
+
+        .month-header .jq {
+            font-size: 0.9rem;
+            color: #7f6248;
+            background: #ede0d4;
+            padding: 0.15rem 1rem;
+            border-radius: 30px;
+            font-weight: 500;
+            margin-left: auto;
+        }
+
+        .month-body {
+            padding: 1.2rem 1.5rem 1.6rem;
+            flex: 1;
+        }
+
+        .month-body .phenology {
+            background: #f4ede6;
+            border-radius: 40px;
+            padding: 0.25rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #7a5d44;
+            display: inline-block;
+            margin-bottom: 0.9rem;
+            letter-spacing: 0.3px;
+        }
+
+        .month-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .month-body ul li {
+            position: relative;
+            padding-left: 1.4rem;
+            margin-bottom: 0.45rem;
+            font-size: 0.95rem;
+            color: #3d352e;
+        }
+
+        .month-body ul li::before {
+            content: "◆";
+            position: absolute;
+            left: 0;
+            color: #d58c4a;
+            font-size: 0.6rem;
+            top: 0.3rem;
+        }
+
+        .month-body ul li strong {
+            color: #a75820;
+            font-weight: 600;
+        }
+
+        .month-body .term {
+            background: #f3ede8;
+            padding: 0.1rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.82rem;
+            color: #7a5d44;
+            border: 1px solid #e6d7ca;
+            display: inline-block;
+            margin: 0 0.1rem;
+        }
+
+        /* ===== 表格区 ===== */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #b45f2a;
+            margin: 3rem 0 1.2rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 3px solid #ebd5c0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .section-title small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #7a5d44;
+            margin-left: 0.5rem;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            background: #ffffff;
+            border-radius: 1.8rem;
+            box-shadow: 0 4px 18px rgba(160, 100, 50, 0.06);
+            border: 1px solid #f0e2d6;
+            padding: 0.2rem 0.2rem 0.2rem 0.2rem;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            min-width: 600px;
+        }
+
+        th {
+            background: #f7ede2;
+            color: #6f4f34;
+            font-weight: 600;
+            padding: 0.9rem 1.2rem;
+            text-align: left;
+            border-bottom: 2px solid #dfccbc;
+        }
+
+        td {
+            padding: 0.8rem 1.2rem;
+            border-bottom: 1px solid #efe4d8;
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table-wrap .highlight {
+            background: #fbf4eb;
+        }
+
+        /* ===== 术语速查 ===== */
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.2rem;
+            margin: 1.8rem 0 2.5rem;
+        }
+
+        .glossary-item {
+            background: #fffcf8;
+            border-radius: 1.2rem;
+            padding: 0.8rem 1.4rem;
+            border: 1px solid #f0e2d6;
+            display: flex;
+            align-items: baseline;
+            gap: 0.4rem 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .glossary-item .term {
+            font-weight: 700;
+            color: #b45f2a;
+            font-size: 1rem;
+            background: #f7ede2;
+            padding: 0.1rem 0.9rem;
+            border-radius: 40px;
+        }
+
+        .glossary-item .def {
+            color: #4d4036;
+            font-size: 0.92rem;
+        }
+
+        /* ===== 温馨提示 ===== */
+        .footer-note {
+            margin-top: 3.5rem;
+            background: #fff6ed;
+            border-radius: 2rem;
+            padding: 1.8rem 2.5rem;
+            border-left: 6px solid #d58c4a;
+            box-shadow: 0 4px 18px rgba(160, 100, 50, 0.06);
+        }
+
+        .footer-note p {
+            font-size: 1.02rem;
+            color: #4d4036;
+        }
+
+        .footer-note strong {
+            color: #a75820;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .header h1 span {
+                font-size: 0.8rem;
+                margin-left: 0.3rem;
+                padding: 0.1rem 0.8rem;
+            }
+
+            .month-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .month-header .month-name {
+                font-size: 1.3rem;
+            }
+            .month-header .jq {
+                font-size: 0.75rem;
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .glossary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-note {
+                padding: 1.2rem 1.2rem;
+            }
+        }
+
+        /* ===== 打印优化 ===== */
+        @media print {
+            body {
+                background: #fff;
+                padding: 0.5in;
+            }
+            .month-card {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            .month-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+            .header {
+                background: #f5ede5;
+                box-shadow: none;
+            }
+            .table-wrap {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+            .footer-note {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ===== HEADER ===== -->
+        <header class="header">
+            <h1>
+                🍊 赣南脐橙
+                <span>全年管理月历</span>
+            </h1>
+            <div class="sub">生长周期 · 农事操作 · 病虫害防治</div>
+            <div class="note">
+                ⚡ 综合信丰、石城等主产区栽培经验 · 根据树龄、气候灵活调整
+            </div>
+        </header>
+
+        <!-- ===== 月份卡片 ===== -->
+        <div class="month-grid">
+
+            <!-- 一月 -->
+            <div class="month-card">
+                <div class="month-header">
+                    <span class="month-name">一月 <small>小寒·大寒</small></span>
+                    <span class="jq">休眠期 · 花芽分化后期</span>
+                </div>
+                <div class="month-body">
+                    <ul>
+                        <li><strong>防寒防冻</strong>：熏烟增温，树干涂白（生石灰浆+硫磺），树盘覆盖，冻前灌水。</li>
+                        <li><strong>及时采果</strong>：霜冻前采完，避免留树冻伤。</li>
+                        <li><strong>冬季清园</strong>：剪除病虫枝，清除落叶落果，每亩撒石灰50～100kg（紫色土除外）。</li>
+                        <li><strong>喷药清园</strong>：喷1%波尔多液或波美0.8～1度石硫合剂；介壳虫/螨类严重的加矿物油+炔螨特。</li>
+                        <li><strong>砍除黄龙病树</strong>：先喷药防木虱迁飞，砍后草甘膦涂树兜，覆膜。</li>
+                        <li><strong>果园整修</strong>：翻土冻杀虫卵，整修梯田、排灌渠、水池。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 二月 -->
+            <div class="month-card">
+                <div class="month-header">
+                    <span class="month-name">二月 <small>立春·雨水</small></span>
+                    <span class="jq">花芽分化后期 · 春芽萌发</span>
+                </div>
+                <div class="month-body">
+                    <ul>
+                        <li><strong>施春肥（芽前肥）</strong>：立春前后，成年树每株腐熟有机肥2～3kg + 复合肥1～1.5kg + 硼肥20～30g。</li>
+                        <li><strong>春季修剪</strong>：回缩短截外围枝，疏除密生、交叉、病虫枝；内膛郁闭“开天窗”。</li>
+                        <li><strong>苗木定植</strong>：大苗定植，穴加腐熟枯饼+磷肥，浇足定根水。</li>
+                        <li><strong>病虫害防治</strong>：春芽萌动（1粒米长）喷波尔多液或铜制剂；红蜘蛛用哒螨灵、噻螨酮、阿维菌素。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 三月 -->
+            <div class="month-card">
+                <div class="month-header">
+                    <span class="month-name">三月 <small>惊蛰·春分</small></span>
+                    <span class="jq">现蕾期 · 春梢生长期</span>
+                </div>
+                <div class="month-body">
+                    <ul>
+                        <li><strong>继续修剪</strong>：旺树疏除强营养枝及无叶花枝，保留有叶花枝；花量多、树弱适当疏蕾。</li>
+                        <li><strong>施春肥</strong>：3月上旬施腐熟有机肥（鸡粪/牛粪）+ 复合肥，每亩有机肥2000kg以上 + 复合肥50kg。</li>
+                        <li><strong>病虫害防治</strong>：重点防螨类、炭疽病、溃疡病、蚜虫、疮痂病。春梢1cm时喷药。</li>
+                        <li><strong>土壤管理</strong>：开沟埋绿肥，松土除草，播种夏季绿肥（如印度豇豆）。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 四月 -->
+            <div class="month-card">
+                <div class="month-header">
+                    <span class="month-name">四月 <small>清明·谷雨</small></span>
+                    <span class="jq">春梢老熟 · 开花·谢花</span>
+                </div>
+                <div class="month-body">
+                    <ul>
+                        <li><strong>花期修剪（花后补剪）</strong>：盛花期（花开75%）短截过长花序，疏除畸形、密生、无叶花枝。</li>
+                        <li><strong>施稳果肥（花后肥）</strong>：4月中旬施谢花肥，叶面喷0.3%尿素+0.2%磷酸二氢钾。</li>
+                        <li><strong>保花保果</strong>：根据树势与花量追肥修枝。</li>
+                        <li><strong>土壤管理</strong>：松土除草，树盘覆盖。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 五月 -->
+            <div class="month-card">
+                <div class="month-header">
+                    <span class="month-name">五月 <small>立夏·小满</small></span>
+                    <span class="jq">二次生理落果 · 夏梢抽生</span>
+                </div>
+                <div class="month-body">
+                    <ul>
+                        <li><strong>抹除夏梢</strong>：人工抹除挂果树零星早夏梢，减轻落果，防控木虱。</li>
+                        <li><strong>病虫害防治</strong>：砂皮病、溃疡病上幼果关键期，兼治红蜘蛛。</li>
+                        <li><strong>补充营养</strong>：弱树/果多树补充平衡型复合肥+腐熟麸饼水，增施钙肥（硝酸氨钙/糖醇钙），减少裂果和日灼。</li>
+                        <li><strong>防范干热风</strong>：日均温≥25℃、湿度＜50%时喷水或喷赤霉素防异常落果。</li>
+                        <li><strong>排水防涝</strong>：及时疏通沟渠，防积水。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 六月 -->
+            <div class="month-card">
+                <div class="month-header">
+                    <span class="month-name">六月 <small>芒种·夏至</small></span>
+                    <span class="jq">二次落果后期 · 夏梢生长期</span>
+                </div>
+                <div class="month-body">
+                    <ul>
+                        <li><strong>继续抹梢</strong>：挂果树抹梢至6月中旬，攻放整齐晚夏梢。</li>
+                        <li><strong>施壮果肥</strong>：第二次落果结束后，株产100斤施平衡型复合肥0.6～0.8斤，补充钙肥。</li>
+                        <li><strong>病虫害防治</strong>：木虱爆发第一高峰，重点防黄龙病、溃疡病、砂皮病、卷叶蛾、斜纹夜蛾。</li>
+                        <li><strong>排水与除草</strong>：低洼地开沟排水，清除滴水线内杂草，树盘覆盖10cm以上。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 七月 -->
+            <div class="month-card">
+                <div class="month-header">
+                    <span class="month-name">七月 <small>小暑·大暑</small></span>
+                    <span class="jq">晚夏梢老熟 · 果实迅速膨大</span>
+                </div>
+                <div class="month-body">
+                    <ul>
+                        <li><strong>夏季修剪</strong>：丰产树抹梢至7月中旬，7月中下旬剪除落花落果枝、病虫枝，短截外围枝，疏除小果畸形果。</li>
+                        <li><strong>施壮果肥</strong>：6月中下旬未施的抓紧补施，株产100斤施平衡型复合肥0.6～0.8斤。</li>
+                        <li><strong>抗旱与覆盖</strong>：伏旱季，清除滴水线内杂草，树盘覆盖20cm以上；10天无雨则浇水，缺水可挖深坑灌水。</li>
+                        <li><strong>防范日灼与裂果</strong>：向阳果喷涂白剂/贴白纸/遮阳网；保持土壤水分均衡防裂果。</li>
+                        <li><strong>病虫害防治</strong>：重点防木虱、潜叶蛾、蚜虫、溃疡病；新梢“一梢三药”；防小实蝇。禁用有机磷/菊酯类。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 八月 -->
+            <div class="month-card">
+                <div class="month-header">
+                    <span class="month-name">八月 <small>立秋·处暑</small></span>
+                    <span class="jq">秋梢生长期 · 果实膨大</span>
+                </div>
+                <div class="month-body">
+                    <ul>
+                        <li><strong>壮果促梢</strong>：利用雨水或人工灌水（水肥一体化）壮果促梢。</li>
+                        <li><strong>抗旱防裂果</strong>：连续高温干旱及时灌溉，结合叶面肥树冠喷水降温。</li>
+                        <li><strong>病虫害防治</strong>：秋梢生长期，木虱虫口上升关键期，组织统防统治（无人机/直升机）。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 九月 -->
+            <div class="month-card">
+                <div class="month-header">
+                    <span class="month-name">九月 <small>白露·秋分</small></span>
+                    <span class="jq">果实膨大 · 花芽分化前期</span>
+                </div>
+                <div class="month-body">
+                    <ul>
+                        <li><strong>果实品质提升</strong>：严控氮肥，补充硼、锌叶面肥；清除树盘杂草，增加漫射光促着色。</li>
+                        <li><strong>秋梢管理</strong>：秋梢老熟后注意病虫害防治。</li>
+                        <li><strong>施肥</strong>：9月下旬～10月喷叶面肥（0.4%磷酸二氢钾+0.1%硼砂）1～2次，促膨大转色。</li>
+                        <li><strong>病虫害防治</strong>：重点防溃疡病、炭疽病、木虱、红蜘蛛。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 十月 -->
+            <div class="month-card">
+                <div class="month-header">
+                    <span class="month-name">十月 <small>寒露·霜降</small></span>
+                    <span class="jq">果实成熟 · 花芽分化</span>
+                </div>
+                <div class="month-body">
+                    <ul>
+                        <li><strong>修剪与控梢</strong>：9月下旬～10月中旬疏除交叉枝、内膛枝、直立旺枝。</li>
+                        <li><strong>增施磷钾肥</strong>：每株硫酸钾复合肥1～1.5kg，叶面喷磷酸二氢钾。</li>
+                        <li><strong>幼树控花</strong>：幼龄树10月中下旬喷100mg/kg赤霉素，间隔20～25天再喷一次。</li>
+                        <li><strong>黄龙病排查</strong>：10～11月显症关键期，地毯式排查，病树红漆标识并建台账。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 十一月 -->
+            <div class="month-card">
+                <div class="month-header">
+                    <span class="month-name">十一月 <small>立冬·小雪</small></span>
+                    <span class="jq">果实成熟采收 · 花芽分化</span>
+                </div>
+                <div class="month-body">
+                    <ul>
+                        <li><strong>适时采收</strong>：11月中下旬成熟，11月1日正式开采；“一果两剪”，轻剪轻放。</li>
+                        <li><strong>采前控水</strong>：采前一周停止浇水，提高耐储性。</li>
+                        <li><strong>施采果肥（还阳肥）</strong>：采后每株有机肥10～15kg + 磷钾肥1～2kg，恢复树势，占全年20%。</li>
+                        <li><strong>促进花芽分化</strong>：旺树控水、断根、喷磷酸二氢钾及多效唑。</li>
+                        <li><strong>冬季修剪与清园</strong>：疏剪交叉、重叠、下垂、病虫枝。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 十二月 -->
+            <div class="month-card">
+                <div class="month-header">
+                    <span class="month-name">十二月 <small>大雪·冬至</small></span>
+                    <span class="jq">休眠期 · 花芽分化</span>
+                </div>
+                <div class="month-body">
+                    <ul>
+                        <li><strong>防寒防冻</strong>：12月中下旬霜冻前7～10天灌水，覆盖、包扎、培土、刷白。</li>
+                        <li><strong>施基肥</strong>：11～12月以有机肥为主，配施磷钾肥。</li>
+                        <li><strong>冬季修剪</strong>：继续进行冬剪。</li>
+                        <li><strong>促进花芽分化</strong>：旺树控水、拉枝、喷磷酸二氢钾；幼树可再喷一次100mg/kg赤霉素。</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div><!-- end month-grid -->
+
+        <!-- ===== 施肥总览 ===== -->
+        <h2 class="section-title">🌱 全年施肥总览 <small>按100斤果实计</small></h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>施肥名称</th><th>时间</th><th>占全年比例</th><th>推荐方案</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>春肥（芽前肥）</strong></td><td>2月下旬～3月上旬</td><td>20%</td><td>腐熟有机肥2～3kg + 复合肥1～1.5kg + 硼肥20～30g/株</td></tr>
+                    <tr><td><strong>稳果肥（花后肥）</strong></td><td>4月中旬</td><td>20%</td><td>叶面0.3%尿素+0.2%磷酸二氢钾；弱树补复合肥</td></tr>
+                    <tr><td><strong>壮果肥</strong></td><td>6月中旬～7月</td><td>40%</td><td>平衡型复合肥0.6～0.8斤/株（株产100斤）</td></tr>
+                    <tr><td><strong>采果肥（还阳肥）</strong></td><td>10～11月</td><td>20%</td><td>有机肥10～15kg + 磷钾肥1～2kg/株</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="font-size:0.92rem; color:#6f5a48; margin-top:-0.5rem; margin-bottom:2rem;">
+            📐 施肥原则：每100斤果实全年施氮素0.6斤，N:P₂O₅:K₂O = 1:0.5:1，有机肥供氮占30%以上。
+        </p>
+
+        <!-- ===== 病虫害防治关键期 ===== -->
+        <h2 class="section-title">🐛 全年病虫害防治关键期</h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>时间</th><th>重点防治对象</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1月</td><td>越冬病虫害（清园喷石硫合剂/波尔多液）</td></tr>
+                    <tr><td>2～3月</td><td>溃疡病、炭疽病、红蜘蛛、木虱、蚜虫</td></tr>
+                    <tr><td>4～5月</td><td>砂皮病、溃疡病（上幼果关键期）</td></tr>
+                    <tr><td>6月</td><td>黄龙病、溃疡病、砂皮病、木虱（第一个高峰期）</td></tr>
+                    <tr><td>7～8月</td><td>木虱、潜叶蛾、溃疡病、小实蝇</td></tr>
+                    <tr><td>9～10月</td><td>木虱（高峰期）、溃疡病、炭疽病</td></tr>
+                    <tr><td>10～11月</td><td>黄龙病（显症排查关键期）</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ===== 专业术语速查 ===== -->
+        <h2 class="section-title">📖 专业术语速查</h2>
+        <div class="glossary-grid">
+            <div class="glossary-item"><span class="term">物候期</span><span class="def">植物随气候变化出现的周期性生长发育阶段</span></div>
+            <div class="glossary-item"><span class="term">滴水线</span><span class="def">树冠垂直投影外缘线，根系分布最密集区域</span></div>
+            <div class="glossary-item"><span class="term">花芽分化</span><span class="def">叶芽转化为花芽的生理过程，决定来年花量</span></div>
+            <div class="glossary-item"><span class="term">生理落果</span><span class="def">因生理原因而非病虫害导致的果实脱落（分第一次和第二次）</span></div>
+            <div class="glossary-item"><span class="term">石硫合剂</span><span class="def">石灰+硫磺熬制的传统杀菌杀螨剂</span></div>
+            <div class="glossary-item"><span class="term">波尔多液</span><span class="def">硫酸铜+石灰配制的保护性杀菌剂</span></div>
+            <div class="glossary-item"><span class="term">一梢三药</span><span class="def">每批新梢抽发期喷三次药防治病虫害</span></div>
+            <div class="glossary-item"><span class="term">一果两剪</span><span class="def">采果时第一剪剪下果实，第二剪剪平果蒂</span></div>
+            <div class="glossary-item"><span class="term">开天窗</span><span class="def">疏除树冠顶部或内膛过密枝，改善光照</span></div>
+            <div class="glossary-item"><span class="term">日灼</span><span class="def">烈日暴晒导致果实表皮灼伤</span></div>
+            <div class="glossary-item"><span class="term">干热风</span><span class="def">高温低湿的干燥热风，易导致异常落果</span></div>
+            <div class="glossary-item"><span class="term">水肥一体化</span><span class="def">将灌溉与施肥结合，精准供给水分和养分</span></div>
+        </div>
+
+        <!-- ===== 温馨提示 ===== -->
+        <div class="footer-note">
+            <p>
+                <strong>🍊 温馨提示：</strong> 以上为赣南脐橙标准栽培管理月历，综合信丰、石城、赣县等主产区经验整理。
+                实际生产中请结合<strong>当年气候、果园土壤、树龄树势</strong>灵活调整。
+                建议定期咨询当地 <strong>果茶发展服务中心</strong> 或农业技术人员，获取针对性指导。
+            </p>
+            <p style="margin-top:0.6rem; font-size:0.95rem; color:#7a5d44;">
+                📅 更新：2026年 · 赣南脐橙主产区拉吾尤摩赣南脐橙汇编
+            </p>
+        </div>
+
+    </div><!-- end container -->
+</body>
+</html>
